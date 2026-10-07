@@ -1,0 +1,35 @@
+name: Bug Report
+description: Algo en el código o los scripts no funciona como debería.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Gracias por reportar. Recuerda que esto es para errores de código/scripts, no para debatir sobre los datos."
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del problema
+      description: ¿Qué intentabas hacer y qué falló?
+      placeholder: Al ejecutar `make radar` ocurre...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Pasos para reproducir
+      description: Comandos exactos ejecutados.
+      placeholder: |
+        1. cd apps/web
+        2. npm run dev
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Entorno
+      description: Sistema operativo y versión de Python/Node.
+      placeholder: Windows 11, Node 22, Python 3.12
+    validations:
+      required: true

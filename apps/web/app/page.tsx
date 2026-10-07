@@ -1,48 +1,70 @@
-import { CLAIM_META, ClaimBadge } from "@/components/ClaimBadge";
-import { SignalCard } from "@/components/SignalCard";
+import { SignalRow } from "@/components/SignalRow";
+import { EmptyState } from "@/components/EmptyState";
+import { WeekNav } from "@/components/WeekNav";
+import { FxGapMeter } from "@/components/FxGapMeter";
 import { loadLatest } from "@/lib/data";
-import type { ClaimType } from "@radar/schema";
 
 export default function Home() {
   const latest = loadLatest();
-  const types = Object.keys(CLAIM_META) as ClaimType[];
-
+  const editionDate = latest.edition || "Sin publicar";
+  
+  // Extract FX signals for the FxGapMeter
+  const bcvSignal = latest.signals.find(s => s.tags?.includes("bcv"));
+  const parallelSignal = latest.signals.find(s => s.tags?.includes("parallel"));
+  
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
-      <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
-        Observatorio abierto · edición semanal
-      </p>
-      <h1 className="mt-3 font-serif text-5xl leading-tight">Radar Venezuela</h1>
-      <p className="mt-4 max-w-prose text-lg text-ink-soft">
-        Señales sobre FX, inflación, energía, sanciones, fintech, e-commerce e infraestructura
-        digital. Cada cifra con fuente, fecha de captura y enlace.
-      </p>
+      <header>
+        <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
+          Observatorio abierto · edición semanal
+        </p>
+        <h1 className="mt-3 font-serif text-5xl leading-tight text-ink">Radar Venezuela</h1>
+        <p className="mt-4 max-w-prose text-lg text-ink-soft leading-relaxed">
+          Señales sobre FX, inflación, energía, sanciones, fintech, e-commerce e infraestructura digital. 
+          Cada cifra publicada incluye su fuente primaria verificable, fecha de captura y enlace.
+        </p>
+        <div className="mt-6 flex gap-4">
+          <a href="/methodology" className="px-4 py-2 bg-ink text-paper text-sm font-medium micro-hover">Ver metodología</a>
+          <a href="https://github.com/alej-developer/radar-venezuela/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-rule text-ink text-sm font-medium micro-hover">Contribuir</a>
+        </div>
+      </header>
 
-      <section aria-label="Tipos de afirmación" className="mt-10 grid gap-4 sm:grid-cols-3">
-        {types.map((type) => (
-          <div key={type} className="border-t border-rule pt-3">
-            <ClaimBadge type={type} />
-            <p className="mt-2 text-sm text-ink-soft">{CLAIM_META[type].hint}</p>
-          </div>
-        ))}
-      </section>
+      <div className="mt-12">
+        <WeekNav current={`Semana ${editionDate}`} prev={editionDate} />
+      </div>
 
-      <section aria-label="Última edición" className="mt-14">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-ink-soft">
-          {latest.edition ? `Edición ${latest.edition}` : "Última edición"}
-        </h2>
+      {(bcvSignal && parallelSignal && bcvSignal.value_numeric && parallelSignal.value_numeric) ? (
+        <section className="mt-8 mb-12">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">Monitor FX</h2>
+          <FxGapMeter official={bcvSignal.value_numeric} parallel={parallelSignal.value_numeric} />
+        </section>
+      ) : null}
+
+      <section aria-label="Última edición" className="mt-12">
+        <div className="flex justify-between items-end border-b border-rule pb-2 mb-4">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-ink-soft">
+            Top Señales ({editionDate})
+          </h2>
+          <a href="/signals" className="text-sm underline decoration-rule underline-offset-2 hover:text-ink text-ink-soft">Ver todas</a>
+        </div>
+        
         {latest.signals.length === 0 ? (
-          <p className="mt-4 border border-dashed border-rule bg-paper-raised p-6 text-ink-soft">
-            Aún no hay ediciones publicadas. No mostramos cifras sin fuente, fecha de captura y
-            enlace.
-          </p>
+          <EmptyState />
         ) : (
-          latest.signals.map((signal) => <SignalCard key={signal.id} signal={signal} />)
+          <div className="flex flex-col">
+            {latest.signals.slice(0, 8).map((signal) => (
+              <SignalRow key={signal.id} signal={signal} />
+            ))}
+          </div>
         )}
       </section>
 
-      <footer className="mt-20 border-t border-rule pt-6 text-sm text-ink-soft">
-        Información, no consejo de inversión. Datos de terceros bajo sus propias licencias.
+      <footer className="mt-20 border-t border-rule pt-6 pb-12 flex justify-between text-sm text-ink-soft">
+        <span>Información factual, no consejo de inversión.</span>
+        <div className="space-x-4">
+          <a href="/about" className="hover:text-ink">Acerca de</a>
+          <a href="/radar" className="hover:text-ink">Archivo</a>
+        </div>
       </footer>
     </main>
   );

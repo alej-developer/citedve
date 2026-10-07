@@ -1,0 +1,40 @@
+name: Nueva Señal (New Signal)
+description: Propón un nuevo dato duro o señal para la edición en curso.
+title: "[SIGNAL] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: "¡Gracias por aportar! Radar Venezuela es un observatorio factual. Prohibido aportar opiniones o datos sin fuente primaria verificable."
+  - type: textarea
+    id: json_payload
+    attributes:
+      label: JSON de la señal
+      description: Pega aquí la señal en formato JSON (ver docs/DATA_DICTIONARY.md) o explica el dato.
+      placeholder: |
+        {
+          "id": "ejemplo",
+          "title": "Dato factual",
+          "category": "fx",
+          "value_numeric": 0,
+          ...
+        }
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: URL de la fuente primaria
+      description: Enlace directo al dato.
+      placeholder: https://www.bcv.org.ve/...
+    validations:
+      required: true
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Validaciones
+      options:
+        - label: Confirmo que la fuente pertenece a la lista de SOURCES.md o es una fuente institucional confiable.
+          required: true
+        - label: Confirmo que el texto de la señal usa español neutro y carece de análisis político.
+          required: true

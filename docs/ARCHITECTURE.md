@@ -6,18 +6,28 @@
 `data/signals.json`); todo lo demás se deriva de ellos de forma reproducible. El historial de commits es la
 auditoría de cada cifra y de cada corrección.
 
-## Vista general
+## Vista general (C4 Lite)
 
 ```mermaid
-flowchart LR
-  MD["content/radar/YYYY-MM-DD.md"] --> V
-  J["data/signals.json"] --> V["scripts/validate_signals.py"]
-  S["packages/schema (JSON Schema)"] --> V
-  V --> B["scripts/build_data.py"]
-  B --> C["data/signals.csv"]
-  B --> L["data/latest.json"]
-  L --> W["apps/web (Next.js, export estático)"]
-  J --> A["apps/api (FastAPI, solo lectura)"]
+C4Context
+    title C4 Lite - Radar Venezuela
+
+    Person(analyst, "Analista / Curador", "Propone y aprueba señales vía GitHub PR")
+    Person(user, "Usuario / Investigador", "Consulta señales e informes publicados")
+    
+    System_Boundary(radar, "Radar Venezuela") {
+        SystemDb(repo, "Git Repo (Git-as-Database)", "Almacena data/signals.json y content/radar/*.md")
+        System(build_scripts, "Build Scripts (Python)", "Valida JSON Schema, genera CSV y latest.json")
+        System(web, "Web App (Next.js SSG)", "Frontend estático, alojado en Vercel/Pages")
+        System(api, "API de Lectura (FastAPI)", "Expone los datos vía REST (Opcional)")
+    }
+
+    Rel(analyst, repo, "Hace Pull Request con datos", "GitHub")
+    Rel(repo, build_scripts, "Dispara pipelines CI", "GitHub Actions")
+    Rel(build_scripts, repo, "Actualiza derivados", "File I/O")
+    Rel(build_scripts, web, "Provee datos en build-time", "JSON/MD")
+    Rel(user, web, "Navega resúmenes y señales", "HTTPS")
+    Rel(user, api, "Consulta programática", "HTTPS")
 ```
 
 ## Componentes
@@ -49,6 +59,7 @@ Invariantes que el esquema hace cumplir: toda señal tiene al menos una fuente c
 | **uv para Python, npm workspaces para JS** | uv cubre el workspace Python. Se usa npm (incluido con Node) en lugar de pnpm para reducir prerrequisitos; migrar a pnpm es trivial. |
 | **Tipos TS escritos a mano** | Con un esquema de ~10 campos, un generador añade más complejidad que valor; la paridad se vigila por tests en el lado Python. |
 | **Sin fixtures reales en `data/`** | `data/signals.json` arranca vacío para no publicar cifras sin fuente. Los fixtures sintéticos viven en `packages/schema/fixtures/`. |
+| **Sin autenticación de escritura** | La API es de solo lectura en esta etapa (MVP). Las señales entran exclusivamente por pull request al repo (Git as Database). |
 
 ## Despliegue previsto
 

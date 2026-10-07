@@ -1,39 +1,22 @@
 # Catálogo de fuentes
 
-Catálogo inicial de fuentes **candidatas** por dominio. Una fuente solo se usa en una señal cuando su ficha
-está completa (licencia revisada, rezago y limitaciones declarados). Todas las licencias figuran como
-pendientes de revisión: este documento no afirma condiciones de uso que aún no se hayan verificado.
+Lista de fuentes legítimas para **Radar Venezuela**. El radar se construye exclusivamente con información de las fuentes documentadas aquí. Prohibido inventar cifras. Si no hay fuente, no hay señal. Las opiniones están excluidas; solo usamos reportes de datos duros u observables.
 
-| Dominio | Fuente | Tipo | URL base | Uso previsto | Licencia |
-|---------|--------|------|----------|--------------|----------|
-| FX | Banco Central de Venezuela (BCV) | Oficial | <https://www.bcv.org.ve> | Tasa oficial | Por revisar |
-| Inflación | Banco Central de Venezuela (BCV) | Oficial | <https://www.bcv.org.ve> | Índice de precios publicado | Por revisar |
-| Inflación | Instituto Nacional de Estadística (INE) | Oficial | <https://www.ine.gob.ve> | Estadísticas oficiales | Por revisar |
-| Macro | Fondo Monetario Internacional (FMI) | Multilateral | <https://www.imf.org> | Contexto y proyecciones | Por revisar |
-| Macro | Banco Mundial | Multilateral | <https://data.worldbank.org> | Series macro abiertas | Por revisar |
-| Energía | OPEP, Monthly Oil Market Report | Organismo internacional | <https://www.opec.org> | Producción petrolera | Por revisar |
-| Energía | U.S. EIA | Oficial (EE. UU.) | <https://www.eia.gov> | Producción, exportaciones | Por revisar |
-| Sanciones | OFAC, U.S. Treasury | Oficial (EE. UU.) | <https://ofac.treasury.gov> | Licencias generales y designaciones | Por revisar |
-| Fintech/Pagos | SUDEBAN | Oficial | <https://www.sudeban.gob.ve> | Regulación bancaria y de pagos | Por revisar |
-| Infra. digital | CONATEL | Oficial | <https://www.conatel.gob.ve> | Telecomunicaciones | Por revisar |
-| Infra. digital | UIT (ITU DataHub) | Multilateral | <https://datahub.itu.int> | Conectividad | Por revisar |
-| Infra. digital | Cloudflare Radar | Privada (datos abiertos) | <https://radar.cloudflare.com> | Tráfico e interrupciones | Por revisar |
-| Archivo | Internet Archive (Wayback Machine) | Archivo | <https://web.archive.org> | `archive_url` de evidencia | N/A |
-
-## Ficha mínima de cada fuente
-
-| Campo | Contenido |
-|-------|-----------|
-| Tipo | oficial / multilateral / ONG / prensa / privada / dato abierto |
-| Licencia y redistribución | Qué se puede copiar, citar o enlazar |
-| Frecuencia y rezago | Cada cuánto publica y con qué retraso |
-| Limitaciones | Sesgos, cambios metodológicos, cobertura |
-| Método de captura | API, descarga abierta o ingreso manual citado |
+| Dominio | Fuente | Tipo | Descripción | URL Base |
+|---------|--------|------|-------------|----------|
+| FX / Macro | Banco Central de Venezuela (BCV) | Oficial | Tasa oficial y datos macro base | <https://www.bcv.org.ve> |
+| Sanciones / Legal | OFAC, U.S. Treasury | Oficial (EE. UU.) | Licencias, designaciones | <https://ofac.treasury.gov/recent-actions> |
+| Migración / Humanitario | R4V (Plataforma Regional de Coord.) | Multilateral | Flujos migratorios y datos de contexto | <https://www.r4v.info> |
+| Inflación / Economía | OVF (Observatorio Venezolano de Finanzas) | ONG | Datos alternativos de inflación y actividad económica | <https://observatoriodefinanzas.com> |
+| Social / Encuestas | ENCOVI | Académico | Condiciones de vida y pobreza multidimensional | <https://proyectoencovi.com> |
+| Canasta Básica | Cenda / Cendas | ONG | Costo de la canasta alimentaria / básica | <https://cendasfvm.org> |
+| General / Negocios | Reuters / Bloomberg | Prensa seria | Hechos duros y reportes de mercado (excluyendo piezas de opinión) | <https://www.reuters.com>, <https://www.bloomberg.com> |
 
 ## Criterios de incorporación
 
-1. Pública y accesible sin saltarse paywalls ni términos de servicio.
-2. Enlace estable al dato exacto.
-3. Metodología conocida o limitaciones declaradas.
-4. Para FX, siempre ≥ 2 fuentes y presentación como rango; las referencias de mercado paralelo se
-   incorporan solo con la metodología documentada (ver `ROADMAP.md`).
+1. Toda señal `published` exige ≥ 1 source con URL en vivo o archivada.
+2. Nivel de `confidence`:
+   - `high`: Fuente primaria oficial (BCV, OFAC, etc.)
+   - `medium`: Prensa seria o entidades independientes reconocidas (Reuters, Bloomberg, ENCOVI, OVF)
+   - `low`: Estimados puntuales sin publicación metodológica detallada, pero capturados como señal
+3. Prohibido mezclar hechos puros con opinión.

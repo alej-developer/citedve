@@ -23,20 +23,23 @@ SCHEMA_VERSION = "0.1.0"
 
 CSV_COLUMNS = [
     "id",
-    "edition",
-    "domain",
-    "indicator",
-    "claim_type",
     "title",
-    "value",
+    "category",
+    "summary",
+    "value_numeric",
+    "value_text",
     "unit",
-    "range_min",
-    "range_max",
-    "observed_at",
+    "as_of_date",
+    "captured_at",
+    "direction",
     "confidence",
+    "region",
+    "status",
+    "notes",
+    "tags",
     "source_names",
     "source_urls",
-    "source_captured_at",
+    "source_accessed_at",
 ]
 
 
@@ -46,7 +49,8 @@ def _cell(value: Any) -> str:
 
 def sorted_signals(document: dict[str, Any]) -> list[dict[str, Any]]:
     signals: list[dict[str, Any]] = document["signals"]
-    return sorted(signals, key=lambda s: (s["edition"], s["id"]))
+    # We sort by captured_at (descending) as there's no edition anymore
+    return sorted(signals, key=lambda s: (s["captured_at"], s["id"]), reverse=True)
 
 
 def render_csv(signals: list[dict[str, Any]]) -> str:
@@ -54,36 +58,37 @@ def render_csv(signals: list[dict[str, Any]]) -> str:
     writer = csv.writer(buffer, lineterminator="\n")
     writer.writerow(CSV_COLUMNS)
     for s in signals:
-        rng = s.get("range") or {}
-        sources = s["sources"]
+        sources = s.get("sources", [])
         writer.writerow(
             [
                 s["id"],
-                s["edition"],
-                s["domain"],
-                s["indicator"],
-                s["claim_type"],
                 s["title"],
-                _cell(s.get("value")),
+                s["category"],
+                s["summary"],
+                _cell(s.get("value_numeric")),
+                _cell(s.get("value_text")),
                 _cell(s.get("unit")),
-                _cell(rng.get("min")),
-                _cell(rng.get("max")),
-                s["observed_at"],
-                _cell(s.get("confidence")),
+                s["as_of_date"],
+                s["captured_at"],
+                s["direction"],
+                s["confidence"],
+                s.get("region", "VE"),
+                s["status"],
+                _cell(s.get("notes")),
+                " | ".join(s.get("tags", [])),
                 " | ".join(x["name"] for x in sources),
                 " | ".join(x["url"] for x in sources),
-                " | ".join(x["captured_at"] for x in sources),
+                " | ".join(x.get("accessed_at", "") for x in sources),
             ]
         )
     return buffer.getvalue()
 
 
 def render_latest(signals: list[dict[str, Any]]) -> str:
-    edition = max((s["edition"] for s in signals), default=None)
+    # "Latest" can just be the top 50 most recently captured signals
     payload = {
         "schema_version": SCHEMA_VERSION,
-        "edition": edition,
-        "signals": [s for s in signals if s["edition"] == edition],
+        "signals": signals[:50],
     }
     return json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
 

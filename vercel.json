@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm run web:build",
+  "outputDirectory": "apps/web/out",
+  "installCommand": "npm install"
+}
