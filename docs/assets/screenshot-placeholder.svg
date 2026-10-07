@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Captura de pantalla pendiente">
+  <rect width="1200" height="630" fill="#f6f3ec"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#d9d3c4" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="80" y="140" font-family="Georgia, serif" font-size="56" fill="#17202a">Radar Venezuela</text>
+  <text x="80" y="190" font-family="monospace" font-size="22" fill="#4a5560">OBSERVATORIO ABIERTO · EDICIÓN SEMANAL</text>
+  <text x="80" y="540" font-family="monospace" font-size="22" fill="#4a5560">Placeholder: sustituir por captura real de apps/web (docs/assets/screenshot.png)</text>
+</svg>
