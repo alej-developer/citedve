@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Sistema visual provisional: papel cálido + tinta, estética de publicación de datos. */
+:root {
+  --paper: #f6f3ec;
+  --paper-raised: #fbf9f4;
+  --ink: #17202a;
+  --ink-soft: #4a5560;
+  --rule: #d9d3c4;
+  --fact: #1f5f4a;
+  --range: #8a5a00;
+  --hypothesis: #5b3f8c;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-fact: var(--fact);
+  --color-range: var(--range);
+  --color-hypothesis: var(--hypothesis);
+  --font-serif: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}

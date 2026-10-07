@@ -1,0 +1,13 @@
+{
+  "name": "radar-venezuela",
+  "private": true,
+  "license": "Apache-2.0",
+  "engines": { "node": ">=22" },
+  "workspaces": ["apps/web", "packages/schema"],
+  "scripts": {
+    "web:dev": "npm run dev -w apps/web",
+    "web:lint": "npm run lint -w apps/web",
+    "web:typecheck": "npm run typecheck -w apps/web",
+    "web:build": "npm run build -w apps/web"
+  }
+}
