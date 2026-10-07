@@ -1,33 +1,72 @@
 @import "tailwindcss";
 
-/* Sistema visual provisional: papel cálido + tinta, estética de publicación de datos. */
-:root {
-  --paper: #f6f3ec;
-  --paper-raised: #fbf9f4;
-  --ink: #17202a;
-  --ink-soft: #4a5560;
-  --rule: #d9d3c4;
-  --fact: #1f5f4a;
-  --range: #8a5a00;
-  --hypothesis: #5b3f8c;
-}
-
-@theme inline {
+@theme {
   --color-paper: var(--paper);
   --color-paper-raised: var(--paper-raised);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-rule: var(--rule);
-  --color-fact: var(--fact);
-  --color-range: var(--range);
-  --color-hypothesis: var(--hypothesis);
-  --font-serif: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  
+  /* Semantic Colors */
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --color-flat: var(--flat);
+
+  /* Fonts */
+  --font-serif: var(--font-serif-main), Charter, "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-sans-main), system-ui, -apple-system, sans-serif;
 }
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
+@layer base {
+  :root {
+    /* Light Mode: Paper and Ink */
+    --paper: #F9F9F8;
+    --paper-raised: #FFFFFF;
+    --ink: #111111;
+    --ink-soft: #555555;
+    --rule: #E5E5E5;
+
+    /* Accents (Sober, High Contrast AA) */
+    --up: #0F5B46; /* Petroleum Green */
+    --down: #991b1b; /* Constriction Red */
+    --flat: #4b5563; /* Slate */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Dark Mode: Not just inverted, but dark slate/ink */
+      --paper: #111111;
+      --paper-raised: #1A1A1A;
+      --ink: #EDEDED;
+      --ink-soft: #A3A3A3;
+      --rule: #2D2D2D;
+
+      /* Adjusted Accents for Dark Mode */
+      --up: #4ADE80; 
+      --down: #F87171;
+      --flat: #9CA3AF;
+    }
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Tabular figures for data */
+.tabular-data {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Microinteractions */
+.micro-hover {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out;
+}
+.micro-hover:hover {
+  opacity: 0.85;
 }

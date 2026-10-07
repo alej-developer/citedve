@@ -1,4 +1,101 @@
 {
   "schema_version": "0.1.0",
-  "signals": []
+  "signals": [
+    {
+      "id": "bcv-official-rate-2026-10-07",
+      "title": "Tasa de Cambio Oficial BCV alcanza los 873,86 Bs/USD",
+      "category": "fx",
+      "summary": "El Banco Central de Venezuela fijó la tasa de cambio de referencia en 873,86 bolívares por dólar estadounidense para la jornada del 7 de octubre de 2026, producto del promedio ponderado de las mesas de cambio.",
+      "value_numeric": 873.86,
+      "value_text": null,
+      "unit": "Bs/USD",
+      "as_of_date": "2026-10-07",
+      "captured_at": "2026-10-07T14:00:00Z",
+      "direction": "up",
+      "confidence": "high",
+      "sources": [
+        {
+          "name": "Banco Central de Venezuela",
+          "url": "https://www.bcv.org.ve",
+          "accessed_at": "2026-10-07"
+        }
+      ],
+      "tags": ["bcv", "fx", "official"],
+      "region": "VE",
+      "notes": null,
+      "status": "published"
+    },
+    {
+      "id": "parallel-rate-usdt-2026-10-07",
+      "title": "Cotización del Dólar Paralelo (USDT) roza los 992 Bs/USD",
+      "category": "fx",
+      "summary": "La cotización promedio en mercados P2P no oficiales para la compra-venta de USDT se situó en 991,99 bolívares, marcando una brecha cambiaria superior al 13% respecto a la tasa oficial del BCV.",
+      "value_numeric": 991.99,
+      "value_text": null,
+      "unit": "Bs/USD",
+      "as_of_date": "2026-10-07",
+      "captured_at": "2026-10-07T14:00:00Z",
+      "direction": "up",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "Monitor de Divisas Venezuela",
+          "url": "https://monitordedivisavenezuela.com",
+          "accessed_at": "2026-10-07"
+        }
+      ],
+      "tags": ["parallel", "fx", "p2p"],
+      "region": "VE",
+      "notes": "Brecha cambiaria aproximada del 13.5%.",
+      "status": "published"
+    },
+    {
+      "id": "ovf-inflation-close-2024",
+      "title": "Inflación acumulada en Venezuela cerró en 85% durante 2024",
+      "category": "inflation",
+      "summary": "El Observatorio Venezolano de Finanzas (OVF) reportó que la inflación anual finalizó en 85%, siendo el primer cierre anual de dos dígitos en más de una década, aunque con aceleración en el último trimestre.",
+      "value_numeric": 85.0,
+      "value_text": null,
+      "unit": "%",
+      "as_of_date": "2025-01-01",
+      "captured_at": "2026-10-07T14:00:00Z",
+      "direction": "down",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "Observatorio Venezolano de Finanzas (OVF)",
+          "url": "https://observatoriodefinanzas.com",
+          "accessed_at": "2026-10-07"
+        }
+      ],
+      "tags": ["inflation", "ovf", "macro"],
+      "region": "VE",
+      "notes": "Representa una caída sustancial frente al 193% registrado en 2023.",
+      "status": "published"
+    },
+    {
+      "id": "ofac-gl-44a-expiration",
+      "title": "Expiración de Licencia General 44A (Sector Petróleo y Gas)",
+      "category": "sanctions",
+      "summary": "La Licencia General 44A de la OFAC, que permitía un período de cierre ('wind-down') para transacciones del sector petrolero y gasífero en Venezuela, expiró formalmente el 31 de mayo de 2024 a las 12:01 a.m. EDT.",
+      "value_numeric": null,
+      "value_text": "Expirada",
+      "unit": null,
+      "as_of_date": "2024-05-31",
+      "captured_at": "2026-10-07T14:00:00Z",
+      "direction": "n/a",
+      "confidence": "high",
+      "sources": [
+        {
+          "name": "U.S. Department of the Treasury (OFAC)",
+          "url": "https://home.treasury.gov",
+          "accessed_at": "2026-10-07"
+        }
+      ],
+      "tags": ["ofac", "sanctions", "oil"],
+      "region": "VE",
+      "notes": "Desde la expiración, la OFAC evalúa licencias específicas ('Specific Licenses') caso por caso para entidades operando en el sector.",
+      "status": "published"
+    }
+  ]
 }

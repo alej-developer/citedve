@@ -1,0 +1,29 @@
+name: Sugerir Fuente (Source Suggestion)
+description: Propón una nueva fuente institucional para el radar.
+title: "[SOURCE] "
+labels: ["source"]
+body:
+  - type: markdown
+    attributes:
+      value: "Evalúa `docs/SOURCES.md` antes de enviar. Solo aceptamos instituciones públicas, multilaterales, observatorios de prestigio o prensa internacional seria."
+  - type: input
+    id: source_name
+    attributes:
+      label: Nombre de la fuente
+      placeholder: Ej. Banco Mundial
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: URL de la fuente
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justificación
+      description: ¿Por qué es confiable? ¿Qué métricas exclusivas aporta?
+    validations:
+      required: true

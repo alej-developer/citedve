@@ -1,37 +1,52 @@
 ---
-edition: AAAA-MM-DD
-status: draft
+edition: "{WEEK}"
+title: "Radar Venezuela — Semana del {WEEK}"
 ---
 
-# Radar Venezuela · Edición AAAA-MM-DD
+# Radar Venezuela — Semana del {WEEK}
 
-**Titular:** (máx. 2 líneas, factual)
+> **Aviso:** Este radar es un resumen factual y no constituye consejo de inversión ni asesoría legal. Las sanciones y regulaciones (ej. OFAC) cambian constantemente; verifica siempre en las fuentes primarias antes de operar.
 
 ## Resumen ejecutivo
 
-- **[Hecho]** Afirmación verificable. ([Fuente](https://example.org), captura AAAA-MM-DD)
-- **[Rango]** Valores entre fuentes: mín–máx. ([Fuente A](https://example.org/a) · [Fuente B](https://example.org/b))
-- **[Hipótesis · confianza media]** Interpretación. Premisas: … Qué la refutaría: …
+- [Factual] ...
+- [Factual] ...
+- [Factual] ...
+- [Factual] ...
+- [Factual] ...
 
-## FX
+## Señales clave
 
-## Inflación
+| ID | Señal | Categoría | Valor / Rango | Dirección | Confianza |
+|----|-------|-----------|---------------|-----------|-----------|
+| `[id]` | `[title]` | `[category]` | `[value]` `[unit]` | `[direction]` | `[confidence]` |
+| `[id]` | `[title]` | `[category]` | `[value]` `[unit]` | `[direction]` | `[confidence]` |
 
-## Energía
+## Brecha FX (BCV vs Paralelo)
 
-## Sanciones / OFAC
+*(Si hay dato disponible esta semana, documentar spread aquí)*
+- **Tasa Oficial (BCV):** ...
+- **Referencia Alternativa:** ...
+- **Brecha estimada:** ...
 
-## Fintech y pagos
+## Energía e Infraestructura
 
-## E-commerce
+- 
 
-## Infraestructura digital
+## Sanciones y Marco Legal (OFAC/UE)
 
-## Qué cambió frente a la semana anterior
+- *(Solo hechos y fechas de resoluciones/licencias. Sin análisis político)*
 
-## Notas metodológicas y correcciones
+## Fintech y Pagos
 
-## Fuentes
+- 
 
-| Fuente | URL | Captura |
-|--------|-----|---------|
+## Qué vigilar la próxima semana
+
+- 
+- 
+
+## Fuentes y Referencias
+
+*(Añade aquí las citas o enlaces directos referenciados en el texto)*
+- [Fuente 1](url) (Consultado el {WEEK})

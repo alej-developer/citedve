@@ -20,58 +20,43 @@ VALIDATOR = Draft202012Validator(SCHEMA)
 Mutation = Callable[[dict[str, Any]], None]
 
 
-def _sig(doc: dict[str, Any], claim: str) -> dict[str, Any]:
-    for s in doc["signals"]:
-        if s["claim_type"] == claim:
-            found: dict[str, Any] = s
-            return found
-    raise AssertionError(claim)
+def _sig(doc: dict[str, Any]) -> dict[str, Any]:
+    return doc["signals"][0]
 
 
-def _no_sources(d: dict[str, Any]) -> None:
-    _sig(d, "fact")["sources"] = []
+def _no_sources_when_published(d: dict[str, Any]) -> None:
+    s = _sig(d)
+    s["status"] = "published"
+    s["sources"] = []
 
 
-def _source_missing_captured(d: dict[str, Any]) -> None:
-    del _sig(d, "fact")["sources"][0]["captured_at"]
+def _source_missing_accessed_at(d: dict[str, Any]) -> None:
+    s = _sig(d)
+    s["sources"] = [{"name": "BCV", "url": "https://www.bcv.org.ve"}]
 
 
 def _bad_url(d: dict[str, Any]) -> None:
-    _sig(d, "fact")["sources"][0]["url"] = "no-es-url"
+    s = _sig(d)
+    s["sources"] = [{"name": "BCV", "url": "no-es-url", "accessed_at": "2024-01-01"}]
 
 
-def _range_one_source(d: dict[str, Any]) -> None:
-    _sig(d, "range")["sources"] = _sig(d, "range")["sources"][:1]
-
-
-def _range_without_range(d: dict[str, Any]) -> None:
-    del _sig(d, "range")["range"]
-
-
-def _hypothesis_without_falsifiers(d: dict[str, Any]) -> None:
-    del _sig(d, "hypothesis")["falsifiers"]
-
-
-def _unknown_domain(d: dict[str, Any]) -> None:
-    _sig(d, "fact")["domain"] = "politica"
+def _unknown_category(d: dict[str, Any]) -> None:
+    _sig(d)["category"] = "politica"
 
 
 def _extra_field(d: dict[str, Any]) -> None:
-    _sig(d, "fact")["inventado"] = True
+    _sig(d)["inventado"] = True
 
 
 def _bad_date(d: dict[str, Any]) -> None:
-    _sig(d, "fact")["observed_at"] = "03/01/2000"
+    _sig(d)["as_of_date"] = "03/01/2000"
 
 
 INVALID: list[Mutation] = [
-    _no_sources,
-    _source_missing_captured,
+    _no_sources_when_published,
+    _source_missing_accessed_at,
     _bad_url,
-    _range_one_source,
-    _range_without_range,
-    _hypothesis_without_falsifiers,
-    _unknown_domain,
+    _unknown_category,
     _extra_field,
     _bad_date,
 ]

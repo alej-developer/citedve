@@ -4,146 +4,109 @@
 [![License: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](data/LICENSE.md)
 
-**Radar semanal de señales sobre Venezuela: FX, inflación, energía, sanciones/OFAC, fintech y pagos,
-e-commerce e infraestructura digital. Cada cifra con fuente, fecha de captura y enlace.**
+**Observatorio semanal de señales sobre Venezuela (FX, inflación, energía, sanciones, fintech).**  
+Diseñado para inversores, fundadores y analistas que requieren información auditable, donde cada cifra publicada incluye invariablemente su fuente primaria, fecha de captura y enlace.
+
+*Última edición del Radar: 7 de Octubre de 2026*
 
 🇬🇧 *English summary below.*
 
-![Captura de pantalla (placeholder)](docs/assets/screenshot-placeholder.svg)
+> **Demo Pública:** [🔗 radarvenezuela.org](https://radar-venezuela.vercel.app/) *(Añade tu URL de Vercel/Pages)*
 
-## El problema
+---
 
-La información sobre Venezuela está dispersa y **las fuentes se contradicen**. Quien invierte, opera o envía
-remesas necesita saber qué es un hecho, qué es un rango entre fuentes y qué es una hipótesis, sin ruido ni
-opinión disfrazada de dato. Radar Venezuela publica ese resumen cada semana, de forma abierta y auditable.
+### Home (`/`)
+![Home de Radar Venezuela](docs/assets/home-screenshot.png)
 
-No es un blog de opinión, ni un chatbot, ni un dashboard genérico. Ver [`docs/PRODUCT.md`](docs/PRODUCT.md).
+### Explorador de Señales (`/signals`)
+![Explorador de señales](docs/assets/signals-screenshot.png)
 
-## Principios
+*(Reemplaza estas imágenes con pantallazos reales del frontend una vez desplegado).*
 
-- Cada cifra lleva **fuente, fecha de captura y enlace**; el esquema rechaza lo que no los tenga.
-- Tres tipos de afirmación: **Hecho**, **Rango entre fuentes** (≥ 2 fuentes) e **Hipótesis** (con premisas y
-  criterios de refutación).
-- Git es el registro de auditoría: datos, correcciones y contenido están versionados.
+---
 
-## Arquitectura en 5 líneas
+## Arquitectura (C4 Lite)
 
-1. Fuente de verdad: Markdown semanal (`content/radar/`) y `data/signals.json`.
-2. Contrato único en `packages/schema` (JSON Schema) con espejos TypeScript y Pydantic.
-3. `scripts/validate_signals.py` valida; `scripts/build_data.py` deriva `signals.csv` y `latest.json`.
-4. `apps/web` (Next.js, export estático) lee `latest.json`; `apps/api` (FastAPI) expone consulta de solo lectura.
-5. CI: ruff, mypy, pytest, validación del esquema, eslint, tsc y `next build`.
+Radar Venezuela opera bajo el paradigma **Git-as-Database**. La infraestructura muta únicamente a través de Pull Requests, eliminando la necesidad de una base de datos relacional en la fase MVP y asegurando auditoría perfecta.
 
-Detalle y decisiones en [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+```mermaid
+C4Context
+    title C4 Lite - Radar Venezuela
 
-```text
-.
-├── apps/api/          FastAPI + Pydantic v2
-├── apps/web/          Next.js (App Router) + TypeScript + Tailwind
-├── packages/schema/   JSON Schema + tipos TS
-├── content/radar/     ediciones semanales YYYY-MM-DD.md
-├── data/              signals.json · signals.csv · latest.json
-├── docs/              PRODUCT · ARCHITECTURE · DATA_DICTIONARY · SOURCES · ROADMAP
-└── scripts/           build_data.py · validate_signals.py
+    Person(analyst, "Analista / Curador", "Propone y aprueba señales vía GitHub PR")
+    Person(user, "Usuario / Investigador", "Consulta señales e informes publicados")
+    
+    System_Boundary(radar, "Radar Venezuela") {
+        SystemDb(repo, "Git Repo (Git-as-Database)", "Almacena data/signals.json y content/radar/*.md")
+        System(build_scripts, "Build Scripts (Python)", "Valida JSON Schema, genera CSV y latest.json")
+        System(web, "Web App (Next.js SSG)", "Frontend estático, alojado en Vercel/Pages")
+    }
+
+    Rel(analyst, repo, "Hace Pull Request con datos", "GitHub")
+    Rel(repo, build_scripts, "Dispara pipelines CI", "GitHub Actions")
+    Rel(build_scripts, repo, "Actualiza derivados", "File I/O")
+    Rel(build_scripts, web, "Provee datos en build-time", "JSON/MD")
+    Rel(user, web, "Navega resúmenes y señales", "HTTPS")
 ```
 
-## Cómo correr en local
+## Quickstart
 
-Requisitos: [uv](https://docs.astral.sh/uv/) y Node.js 22 o superior.
+Requisitos: `uv`, `node` (v22+).
 
 ```bash
+# 1. Clonar el repositorio
 git clone https://github.com/alej-developer/radar-venezuela.git
 cd radar-venezuela
 
-uv sync                                   # Python 3.12 + dependencias
-npm install                               # dependencias web
+# 2. Instalar dependencias web y Python
+npm install
+uv sync
 
-uv run python scripts/validate_signals.py # valida data/signals.json
-uv run python scripts/build_data.py       # regenera CSV y latest.json
+# 3. Compilar los datos en build-time
+make release
 
-uv run uvicorn radar_api.main:app --app-dir apps/api --reload   # http://127.0.0.1:8000/docs
-npm run web:dev                                                  # http://localhost:3000
+# 4. Iniciar el servidor de desarrollo
+make web
+# > Ready on http://localhost:3000
 ```
 
-Verificación completa (la misma que CI):
+## The "Weekly Radar Ritual" (Human-in-the-Loop)
+
+Para garantizar la fiabilidad y evitar scrapers inestables que violen los TOS institucionales, la curaduría es humana, apoyada en tooling de automatización. Cada lunes, el lead analyst ejecuta:
 
 ```bash
-uv run ruff check . && uv run ruff format --check .
-uv run mypy apps/api scripts
-uv run pytest
-uv run python scripts/validate_signals.py && uv run python scripts/build_data.py --check
-npm run web:lint && npm run web:typecheck && npm run web:build
+make radar WEEK=YYYY-MM-DD
 ```
 
-## Cómo contribuir una señal
+1. **Scaffold:** Genera el esqueleto de `content/radar/YYYY-MM-DD.md`.
+2. **Revisión:** Imprime un checklist con las URLs institucionales (BCV, OFAC, OVF) para inspección manual rápida.
+3. **Validación:** Tras añadir los datos a `data/signals.json`, el script de Python comprueba la integridad (JSON Schema) y que existan las URLs.
+4. **Exportación:** Reconstruye el CSV y el JSON optimizado para la web.
 
-1. Localiza una fuente pública y anota la fecha en que la consultaste.
-2. Añade la señal a `data/signals.json` (campos en [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md)):
+Todo culmina en un Pull Request auditable.
 
-   ```json
-   {
-     "id": "ejemplo-de-id-estable",
-     "edition": "AAAA-MM-DD",
-     "domain": "fx",
-     "indicator": "fx.nombre_indicador",
-     "claim_type": "fact",
-     "title": "Titular factual",
-     "statement": "Enunciado en español neutro, verificable en la fuente.",
-     "value": 0,
-     "unit": "unidad y base",
-     "observed_at": "AAAA-MM-DD",
-     "sources": [
-       { "name": "Nombre de la fuente", "url": "https://...", "captured_at": "AAAA-MM-DD" }
-     ]
-   }
-   ```
+---
 
-   Los valores son de forma, no datos reales. `range` exige ≥ 2 fuentes; `hypothesis` exige `confidence`,
-   `assumptions` y `falsifiers`.
-3. Crea o actualiza `content/radar/AAAA-MM-DD.md` (parte de `_template.md`).
-4. Ejecuta `build_data.py` y `validate_signals.py`, y abre un PR.
+## Contribuciones
 
-Guía completa: [`CONTRIBUTING.md`](CONTRIBUTING.md). Hoja de ruta: [`docs/ROADMAP.md`](docs/ROADMAP.md).
+Aceptamos aportes en forma de PR. Consulta los Issue Templates para:
+- **[SIGNAL]**: Añadir una nueva señal factual y probada.
+- **[SOURCE]**: Proponer una nueva fuente institucional.
+- **[BUG]**: Reportar problemas en el código.
 
-## Estado
-
-v0.1: esqueleto. `data/signals.json` está vacío a propósito: no se publica ninguna cifra sin fuente, fecha de
-captura y enlace. Aún no hay ingestión automática ni interfaz completa (ver hoja de ruta).
+Lee siempre [`CONTRIBUTING.md`](CONTRIBUTING.md) antes de abrir un issue o PR.
 
 ## Licencia
 
-- **Código:** [Apache-2.0](LICENSE). Elegida por su concesión explícita de patentes y su claridad de atribución,
-  adecuadas para que terceros e instituciones reutilicen el proyecto.
-- **Datos y contenido editorial propios:** [CC BY 4.0](data/LICENSE.md). Los datos de terceros conservan su licencia.
+- **Código:** [Apache-2.0](LICENSE). 
+- **Datos y contenido editorial propios:** [CC BY 4.0](data/LICENSE.md).
 
-## Cómo citar
+## Aviso Legal
 
-Ver [`CITATION.cff`](CITATION.cff).
-
-## Aviso legal
-
-- **No es consejo de inversión**, financiero, legal ni fiscal. Es información con fines divulgativos.
-- **Los datos son de terceros**: cada cifra pertenece a su fuente y puede contener errores, rezagos o
-  revisiones. Verifica siempre en el enlace original.
-- **Las sanciones (OFAC) y la regulación pueden cambiar** en cualquier momento; consulta siempre la fuente
-  primaria vigente antes de operar.
+La información aquí expuesta **no constituye consejo de inversión**, legal o financiero. Los datos pertenecen a terceros (BCV, observatorios independientes, etc.) y pueden sufrir rezagos. Verifica siempre con la fuente original enlazada antes de tomar decisiones.
 
 ---
 
 ## English summary
 
-**Radar Venezuela** is an open-source weekly radar of signals about Venezuela: FX, inflation, energy,
-sanctions/OFAC, fintech and payments, e-commerce and digital infrastructure. Every figure ships with its
-source, capture date and link, and every claim is labelled as a **fact**, a **range across sources** or a
-**hypothesis**.
-
-- **Stack:** Python 3.12 + FastAPI + Pydantic v2; Next.js (App Router) + TypeScript + Tailwind; a shared
-  JSON Schema contract; Markdown + JSON/CSV versioned in Git; GitHub Actions CI.
-- **Run locally:** `uv sync && npm install`, then `uv run python scripts/validate_signals.py`,
-  `uv run uvicorn radar_api.main:app --app-dir apps/api --reload` and `npm run web:dev`.
-- **Contribute a signal:** see [`CONTRIBUTING.md`](CONTRIBUTING.md) (in Spanish) and
-  [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md).
-- **License:** code under Apache-2.0; own data and editorial content under CC BY 4.0; third-party data keeps
-  its original license.
-- **Disclaimer:** not investment advice; data comes from third parties; OFAC sanctions and regulations can
-  change at any time.
+**Radar Venezuela** is an open-source weekly radar of signals about Venezuela (FX, inflation, energy, sanctions). Designed for strict auditability, every claim ships with a primary source, capture date, and URL. It uses a **Git-as-Database** architecture with Python validation scripts and a static Next.js frontend for zero-cost hosting. Code is licensed under Apache-2.0.

@@ -6,7 +6,7 @@
 
 export const SCHEMA_VERSION = "0.1.0" as const;
 
-export const DOMAINS = [
+export const CATEGORIES = [
   "fx",
   "inflation",
   "energy",
@@ -14,55 +14,57 @@ export const DOMAINS = [
   "fintech",
   "ecommerce",
   "digital_infra",
+  "politics_risk",
+  "other"
 ] as const;
-export type Domain = (typeof DOMAINS)[number];
+export type Category = (typeof CATEGORIES)[number];
 
-export const CLAIM_TYPES = ["fact", "range", "hypothesis"] as const;
-export type ClaimType = (typeof CLAIM_TYPES)[number];
+export const DIRECTIONS = ["up", "down", "flat", "mixed", "n/a"] as const;
+export type Direction = (typeof DIRECTIONS)[number];
 
-export type Confidence = "low" | "medium" | "high";
+export const CONFIDENCE_LEVELS = ["high", "medium", "low"] as const;
+export type Confidence = (typeof CONFIDENCE_LEVELS)[number];
+
+export const STATUSES = ["published", "draft", "retracted"] as const;
+export type Status = (typeof STATUSES)[number];
 
 /** Fecha ISO `YYYY-MM-DD`. */
 export type IsoDate = string;
+/** Fecha ISO con hora `YYYY-MM-DDTHH:mm:ssZ`. */
+export type IsoDateTime = string;
 
 export interface Source {
   name: string;
   url: string;
-  captured_at: IsoDate;
-  published_at?: IsoDate;
-  archive_url?: string;
-}
-
-export interface ValueRange {
-  min: number;
-  max: number;
+  accessed_at: IsoDate;
 }
 
 export interface Signal {
   id: string;
-  edition: IsoDate;
-  domain: Domain;
-  indicator: string;
-  claim_type: ClaimType;
   title: string;
-  statement: string;
-  value?: number | null;
+  category: Category;
+  summary: string;
+  value_numeric?: number | null;
+  value_text?: string | null;
   unit?: string | null;
-  range?: ValueRange;
-  observed_at: IsoDate;
+  as_of_date: IsoDate;
+  captured_at: IsoDateTime;
+  direction: Direction;
+  confidence: Confidence;
   sources: Source[];
-  confidence?: Confidence;
-  assumptions?: string[];
-  falsifiers?: string[];
+  tags: string[];
+  region: string;
+  notes?: string | null;
+  status: Status;
 }
 
 export interface SignalsDocument {
-  schema_version: typeof SCHEMA_VERSION;
+  schema_version: string;
   signals: Signal[];
 }
 
 export interface LatestDocument {
-  schema_version: typeof SCHEMA_VERSION;
+  schema_version: string;
   edition: IsoDate | null;
   signals: Signal[];
 }
