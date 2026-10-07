@@ -1,0 +1,42 @@
+[project]
+name = "radar-venezuela"
+version = "0.1.0"
+description = "Raíz del monorepo Radar Venezuela (workspace uv)."
+requires-python = ">=3.12"
+dependencies = ["radar-api"]
+
+[dependency-groups]
+dev = [
+  "httpx>=0.27",
+  "jsonschema>=4.22",
+  "mypy>=1.11",
+  "pytest>=8.3",
+  "ruff>=0.6",
+  "types-jsonschema>=4.22",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["apps/api"]
+
+[tool.uv.sources]
+radar-api = { workspace = true }
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["apps/web", "node_modules"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["apps/api/tests"]
+pythonpath = ["apps/api"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
