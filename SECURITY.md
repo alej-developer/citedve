@@ -7,7 +7,7 @@ Solo la rama `main`. El proyecto está en fase pre-1.0.
 ## Cómo reportar una vulnerabilidad
 
 **No abras un issue público.** Usa el reporte privado de GitHub:
-<https://github.com/alej-developer/radar-venezuela/security/advisories/new>
+<https://github.com/alej-developer/citedve/security/advisories/new>
 
 Incluye pasos para reproducir, impacto estimado y versión/commit afectado. Responderemos con un
 acuse de recibo en un plazo objetivo de 5 días hábiles y coordinaremos la divulgación contigo.

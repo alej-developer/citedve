@@ -1,22 +1,22 @@
-# Radar Venezuela
+# CitedVE
 
-[![CI](https://github.com/alej-developer/radar-venezuela/actions/workflows/ci.yml/badge.svg)](https://github.com/alej-developer/radar-venezuela/actions/workflows/ci.yml)
+[![CI](https://github.com/alej-developer/citedve/actions/workflows/ci.yml/badge.svg)](https://github.com/alej-developer/citedve/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/code-Apache--2.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](data/LICENSE.md)
 
-**Observatorio semanal de señales sobre Venezuela (FX, inflación, energía, sanciones, fintech).**  
+**Señales citadas sobre Venezuela, open source.**  
 Diseñado para inversores, fundadores y analistas que requieren información auditable, donde cada cifra publicada incluye invariablemente su fuente primaria, fecha de captura y enlace.
 
 *Última edición del Radar: 7 de Octubre de 2026*
 
 🇬🇧 *English summary below.*
 
-> **Demo Pública:** [🔗 radarvenezuela.org](https://radar-venezuela.vercel.app/) *(Añade tu URL de Vercel/Pages)*
+> **Demo Pública:** [🔗 citedve.vercel.app](https://citedve.vercel.app/) *(Añade tu URL de Vercel/Pages)*
 
 ---
 
 ### Home (`/`)
-![Home de Radar Venezuela](docs/assets/home-screenshot.png)
+![Home de CitedVE](docs/assets/home-screenshot.png)
 
 ### Explorador de Señales (`/signals`)
 ![Explorador de señales](docs/assets/signals-screenshot.png)
@@ -27,16 +27,16 @@ Diseñado para inversores, fundadores y analistas que requieren información aud
 
 ## Arquitectura (C4 Lite)
 
-Radar Venezuela opera bajo el paradigma **Git-as-Database**. La infraestructura muta únicamente a través de Pull Requests, eliminando la necesidad de una base de datos relacional en la fase MVP y asegurando auditoría perfecta.
+CitedVE opera bajo el paradigma **Git-as-Database**. La infraestructura muta únicamente a través de Pull Requests, eliminando la necesidad de una base de datos relacional en la fase MVP y asegurando auditoría perfecta.
 
 ```mermaid
 C4Context
-    title C4 Lite - Radar Venezuela
+    title C4 Lite - CitedVE
 
     Person(analyst, "Analista / Curador", "Propone y aprueba señales vía GitHub PR")
     Person(user, "Usuario / Investigador", "Consulta señales e informes publicados")
     
-    System_Boundary(radar, "Radar Venezuela") {
+    System_Boundary(radar, "CitedVE") {
         SystemDb(repo, "Git Repo (Git-as-Database)", "Almacena data/signals.json y content/radar/*.md")
         System(build_scripts, "Build Scripts (Python)", "Valida JSON Schema, genera CSV y latest.json")
         System(web, "Web App (Next.js SSG)", "Frontend estático, alojado en Vercel/Pages")
@@ -55,8 +55,8 @@ Requisitos: `uv`, `node` (v22+).
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/alej-developer/radar-venezuela.git
-cd radar-venezuela
+git clone https://github.com/alej-developer/citedve.git
+cd citedve
 
 # 2. Instalar dependencias web y Python
 npm install
@@ -109,4 +109,4 @@ La información aquí expuesta **no constituye consejo de inversión**, legal o 
 
 ## English summary
 
-**Radar Venezuela** is an open-source weekly radar of signals about Venezuela (FX, inflation, energy, sanctions). Designed for strict auditability, every claim ships with a primary source, capture date, and URL. It uses a **Git-as-Database** architecture with Python validation scripts and a static Next.js frontend for zero-cost hosting. Code is licensed under Apache-2.0.
+**CitedVE** is an open-source cited signals on Venezuela (FX, inflation, energy, sanctions). Designed for strict auditability, every claim ships with a primary source, capture date, and URL. It uses a **Git-as-Database** architecture with Python validation scripts and a static Next.js frontend for zero-cost hosting. Code is licensed under Apache-2.0.

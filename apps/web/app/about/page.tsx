@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Acerca de | Radar Venezuela",
+  title: "Acerca de | CitedVE",
 };
 
 export default function About() {
@@ -13,7 +13,7 @@ export default function About() {
         <section>
           <h2 className="font-serif text-2xl text-ink mb-3">Motivación</h2>
           <p>
-            Radar Venezuela nace ante la necesidad de la diáspora, inversores y operadores locales de contar con un resumen semanal <strong>citado y auditable</strong>, lejos del ruido y la opinión disfrazada de dato.
+            CitedVE nace ante la necesidad de la diáspora, inversores y operadores locales de contar con un resumen semanal <strong>citado y auditable</strong>, lejos del ruido y la opinión disfrazada de dato.
             El proyecto demuestra capacidades en diseño de productos de datos, ingeniería full-stack y curaduría institucional.
           </p>
         </section>
@@ -31,7 +31,7 @@ export default function About() {
           <p>
             Todo el código y los datos están abiertos en GitHub. Las contribuciones son procesadas exclusivamente mediante Pull Requests para garantizar la inmutabilidad de la cadena de datos ("Git as Database").
           </p>
-          <a href="https://github.com/alej-developer/radar-venezuela" className="mt-4 inline-block px-4 py-2 bg-ink text-paper text-sm font-medium micro-hover" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/alej-developer/citedve" className="mt-4 inline-block px-4 py-2 bg-ink text-paper text-sm font-medium micro-hover" target="_blank" rel="noopener noreferrer">
             Ver Repositorio en GitHub
           </a>
         </section>

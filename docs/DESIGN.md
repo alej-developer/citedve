@@ -1,7 +1,7 @@
-# Sistema Visual y Diseño (Radar Venezuela)
+# Sistema Visual y Diseño (CitedVE)
 
 ## Filosofía
-Radar Venezuela no es una startup B2B SaaS promocionando su "AI". Es un **observatorio institucional y editorial**. Los usuarios vienen a consumir hechos densos con alta confianza y trazabilidad.
+CitedVE no es una startup B2B SaaS promocionando su "AI". Es un **observatorio institucional y editorial**. Los usuarios vienen a consumir hechos densos con alta confianza y trazabilidad.
 
 **Principios:**
 - **Seriedad por encima del "Wow":** Nada de blobs, glassmorphism o animaciones complejas de 3D. 

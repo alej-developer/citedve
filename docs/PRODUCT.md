@@ -1,4 +1,4 @@
-# Radar Venezuela — Documento de producto
+# CitedVE — Documento de producto
 
 > Estado: borrador v0.1 · Alcance: visión, audiencia, anti-objetivos, MVP a 30 días, métricas de calidad del dato y criterios de «no hacer». No incluye diseño técnico detallado ni código.
 
@@ -6,7 +6,7 @@
 
 ## 1. Visión
 
-**Radar Venezuela es un observatorio abierto que publica cada semana un resumen citado de las señales económicas y digitales del país**: tipo de cambio, inflación, energía, sanciones/OFAC, fintech y pagos, comercio electrónico e infraestructura digital.
+**CitedVE es un observatorio abierto que publica cada semana un resumen citado de las señales económicas y digitales del país**: tipo de cambio, inflación, energía, sanciones/OFAC, fintech y pagos, comercio electrónico e infraestructura digital.
 
 Una frase: *«Lo que cambió esta semana en Venezuela, con fuente, fecha y enlace, y sin opinión disfrazada de dato».*
 
@@ -66,7 +66,7 @@ Una frase: *«Lo que cambió esta semana en Venezuela, con fuente, fecha y enlac
 
 ## 3. Anti-objetivos
 
-Radar Venezuela **no es**:
+CitedVE **no es**:
 
 - **Un blog de opinión.** Las hipótesis existen, pero están etiquetadas, justificadas y separadas de los hechos.
 - **Un chatbot ni un asistente conversacional.** Sin interfaz de chat en el MVP ni en el corto plazo.

@@ -1,6 +1,6 @@
 # Cómo contribuir
 
-Gracias por querer mejorar Radar Venezuela. Antes de empezar, lee [`docs/PRODUCT.md`](docs/PRODUCT.md)
+Gracias por querer mejorar CitedVE. Antes de empezar, lee [`docs/PRODUCT.md`](docs/PRODUCT.md)
 (principios y criterios de «no hacer») y el [Código de conducta](CODE_OF_CONDUCT.md).
 
 ## Entorno local

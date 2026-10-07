@@ -1,6 +1,6 @@
 # @radar/schema
 
-Contrato de datos de Radar Venezuela.
+Contrato de datos de CitedVE.
 
 | Archivo | Rol |
 |---------|-----|

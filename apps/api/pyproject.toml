@@ -1,7 +1,7 @@
 [project]
 name = "radar-api"
 version = "0.1.0"
-description = "API de consulta de Radar Venezuela (FastAPI + Pydantic v2)."
+description = "API de consulta de CitedVE (FastAPI + Pydantic v2)."
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"

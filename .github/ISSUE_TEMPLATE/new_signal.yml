@@ -5,7 +5,7 @@ labels: ["data"]
 body:
   - type: markdown
     attributes:
-      value: "¡Gracias por aportar! Radar Venezuela es un observatorio factual. Prohibido aportar opiniones o datos sin fuente primaria verificable."
+      value: "¡Gracias por aportar! CitedVE es un observatorio factual. Prohibido aportar opiniones o datos sin fuente primaria verificable."
   - type: textarea
     id: json_payload
     attributes:

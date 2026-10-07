@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Metodología | Radar Venezuela",
+  title: "Metodología | CitedVE",
 };
 
 export default function Methodology() {
@@ -14,7 +14,7 @@ export default function Methodology() {
         <section>
           <h2 className="font-serif text-2xl text-ink mb-3">Principios Fundamentales</h2>
           <p>
-            Radar Venezuela no es un generador de opiniones ni un agregador de noticias. 
+            CitedVE no es un generador de opiniones ni un agregador de noticias. 
             Es un repositorio estricto de señales donde <strong>cada dato requiere una cita primaria</strong>. 
             Rechazamos los rumores de redes sociales y priorizamos los documentos oficiales, boletines académicos y reportes financieros verificables.
           </p>

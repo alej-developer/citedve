@@ -3,7 +3,7 @@ import { SignalRow } from "@/components/SignalRow";
 import { EmptyState } from "@/components/EmptyState";
 
 export const metadata = {
-  title: "Explorador de Señales | Radar Venezuela",
+  title: "Explorador de Señales | CitedVE",
 };
 
 export default function SignalsExplorer() {

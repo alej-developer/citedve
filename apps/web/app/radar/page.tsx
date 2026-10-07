@@ -2,7 +2,7 @@ import { getRadarPosts } from "@/lib/data";
 import { EmptyState } from "@/components/EmptyState";
 
 export const metadata = {
-  title: "Archivo | Radar Venezuela",
+  title: "Archivo | CitedVE",
 };
 
 export default function RadarArchive() {

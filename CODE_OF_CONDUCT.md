@@ -5,7 +5,7 @@ Adaptado del [Contributor Covenant 2.1](https://www.contributor-covenant.org/es/
 ## Nuestro compromiso
 
 Queremos una comunidad abierta y respetuosa, sin acoso, independientemente de edad, origen,
-identidad, nacionalidad, experiencia, religión, orientación u opiniones. Radar Venezuela es un
+identidad, nacionalidad, experiencia, religión, orientación u opiniones. CitedVE es un
 proyecto de datos: **no toma posición partidista** y espera el mismo estándar de sus participantes.
 
 ## Comportamiento esperado

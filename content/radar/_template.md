@@ -1,9 +1,9 @@
 ---
 edition: "{WEEK}"
-title: "Radar Venezuela — Semana del {WEEK}"
+title: "CitedVE — Semana del {WEEK}"
 ---
 
-# Radar Venezuela — Semana del {WEEK}
+# CitedVE — Semana del {WEEK}
 
 > **Aviso:** Este radar es un resumen factual y no constituye consejo de inversión ni asesoría legal. Las sanciones y regulaciones (ej. OFAC) cambian constantemente; verifica siempre en las fuentes primarias antes de operar.
 

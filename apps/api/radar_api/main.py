@@ -19,9 +19,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Radar Venezuela API",
+    title="CitedVE API",
     version=__version__,
-    description="API de solo lectura para señales de Radar Venezuela (MVP).",
+    description="API de solo lectura para señales de CitedVE (MVP).",
     lifespan=lifespan,
 )
 

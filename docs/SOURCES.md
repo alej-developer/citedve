@@ -1,6 +1,6 @@
 # Catálogo de fuentes
 
-Lista de fuentes legítimas para **Radar Venezuela**. El radar se construye exclusivamente con información de las fuentes documentadas aquí. Prohibido inventar cifras. Si no hay fuente, no hay señal. Las opiniones están excluidas; solo usamos reportes de datos duros u observables.
+Lista de fuentes legítimas para **CitedVE**. El radar se construye exclusivamente con información de las fuentes documentadas aquí. Prohibido inventar cifras. Si no hay fuente, no hay señal. Las opiniones están excluidas; solo usamos reportes de datos duros u observables.
 
 | Dominio | Fuente | Tipo | Descripción | URL Base |
 |---------|--------|------|-------------|----------|

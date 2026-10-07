@@ -58,7 +58,7 @@ export default async function SignalDetailPage({ params }: { params: Promise<{ i
         <div className="mt-12 p-4 border border-dashed border-rule bg-paper-raised">
           <h3 className="font-mono text-xs uppercase tracking-widest text-ink mb-2">Cómo Citar Esta Señal</h3>
           <code className="text-xs font-mono block break-all text-ink-soft select-all">
-            Radar Venezuela ({signal.as_of_date.substring(0,4)}). {signal.title}. Capturado el {new Date(signal.captured_at).toLocaleDateString("es-ES")}. URL: https://radarvenezuela.org/signals/{signal.id}
+            CitedVE ({signal.as_of_date.substring(0,4)}). {signal.title}. Capturado el {new Date(signal.captured_at).toLocaleDateString("es-ES")}. URL: https://citedve.vercel.app/signals/{signal.id}
           </code>
         </div>
       </section>

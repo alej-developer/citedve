@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/alej-developer/radar-venezuela/packages/schema/signals.schema.json",
-  "title": "Radar Venezuela — signals document",
+  "$id": "https://github.com/alej-developer/citedve/packages/schema/signals.schema.json",
+  "title": "CitedVE — signals document",
   "description": "Contrato único de datos. Toda señal lleva fuente, fecha de captura y enlace.",
   "type": "object",
   "additionalProperties": false,

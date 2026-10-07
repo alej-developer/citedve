@@ -18,14 +18,14 @@ export default function Home() {
         <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
           Observatorio abierto · edición semanal
         </p>
-        <h1 className="mt-3 font-serif text-5xl leading-tight text-ink">Radar Venezuela</h1>
+        <h1 className="mt-3 font-serif text-5xl leading-tight text-ink">CitedVE</h1>
         <p className="mt-4 max-w-prose text-lg text-ink-soft leading-relaxed">
           Señales sobre FX, inflación, energía, sanciones, fintech, e-commerce e infraestructura digital. 
           Cada cifra publicada incluye su fuente primaria verificable, fecha de captura y enlace.
         </p>
         <div className="mt-6 flex gap-4">
           <a href="/methodology" className="px-4 py-2 bg-ink text-paper text-sm font-medium micro-hover">Ver metodología</a>
-          <a href="https://github.com/alej-developer/radar-venezuela/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-rule text-ink text-sm font-medium micro-hover">Contribuir</a>
+          <a href="https://github.com/alej-developer/citedve/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="px-4 py-2 border border-rule text-ink text-sm font-medium micro-hover">Contribuir</a>
         </div>
       </header>
 

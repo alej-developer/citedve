@@ -16,21 +16,21 @@ const sansFont = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Radar Venezuela — señales semanales citadas",
+  title: "CitedVE — señales citadas sobre Venezuela, open source",
   description:
-    "Radar semanal de señales sobre Venezuela (FX, inflación, energía, sanciones, fintech, e-commerce, infraestructura digital). Cada cifra con fuente, fecha de captura y enlace.",
+    "Señales citadas sobre Venezuela, open source. Cada cifra con fuente, fecha de captura y enlace.",
   openGraph: {
-    title: "Radar Venezuela",
-    description: "Observatorio editorial abierto. Cada cifra incluye fuente primaria, fecha de captura y enlace.",
-    url: "https://radarvenezuela.org",
-    siteName: "Radar Venezuela",
+    title: "CitedVE",
+    description: "Señales citadas sobre Venezuela, open source. Cada cifra incluye fuente primaria, fecha de captura y enlace.",
+    url: "https://citedve.vercel.app",
+    siteName: "CitedVE",
     locale: "es_VE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Radar Venezuela",
-    description: "Observatorio editorial abierto. Cada cifra incluye fuente primaria, fecha de captura y enlace.",
+    title: "CitedVE",
+    description: "Señales citadas sobre Venezuela, open source. Cada cifra incluye fuente primaria, fecha de captura y enlace.",
   },
 };
 

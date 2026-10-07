@@ -10,12 +10,12 @@ auditoría de cada cifra y de cada corrección.
 
 ```mermaid
 C4Context
-    title C4 Lite - Radar Venezuela
+    title C4 Lite - CitedVE
 
     Person(analyst, "Analista / Curador", "Propone y aprueba señales vía GitHub PR")
     Person(user, "Usuario / Investigador", "Consulta señales e informes publicados")
     
-    System_Boundary(radar, "Radar Venezuela") {
+    System_Boundary(radar, "CitedVE") {
         SystemDb(repo, "Git Repo (Git-as-Database)", "Almacena data/signals.json y content/radar/*.md")
         System(build_scripts, "Build Scripts (Python)", "Valida JSON Schema, genera CSV y latest.json")
         System(web, "Web App (Next.js SSG)", "Frontend estático, alojado en Vercel/Pages")

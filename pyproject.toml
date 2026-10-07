@@ -1,7 +1,7 @@
 [project]
-name = "radar-venezuela"
+name = "citedve"
 version = "0.1.0"
-description = "Raíz del monorepo Radar Venezuela (workspace uv)."
+description = "Raíz del monorepo CitedVE (workspace uv)."
 requires-python = ">=3.12"
 dependencies = ["radar-api"]
 

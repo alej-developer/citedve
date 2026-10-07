@@ -4,7 +4,7 @@ import { getRadarPosts, loadAllSignals } from '@/lib/data';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://radarvenezuela.org";
+  const baseUrl = "https://citedve.vercel.app";
 
   // Static routes
   const staticRoutes = [

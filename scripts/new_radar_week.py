@@ -42,7 +42,7 @@ def main() -> int:
 
     target_md = CONTENT_DIR / f"{week}.md"
     
-    print(f"=== Radar Venezuela - Semana {week} ===")
+    print(f"=== CitedVE - Semana {week} ===")
     
     # 1. Crear documento desde plantilla
     if not target_md.exists():
