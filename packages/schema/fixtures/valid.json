@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1.0",
+  "signals": [
+    {
+      "id": "fixture-fact-001",
+      "edition": "2000-01-03",
+      "domain": "fx",
+      "indicator": "fx.fixture_rate",
+      "claim_type": "fact",
+      "title": "Fixture sintético: hecho",
+      "statement": "Registro sintético solo para pruebas. No describe ningún dato real.",
+      "value": 1.0,
+      "unit": "fixture",
+      "observed_at": "2000-01-02",
+      "sources": [
+        {
+          "name": "Fixture A",
+          "url": "https://example.org/a",
+          "captured_at": "2000-01-03"
+        }
+      ]
+    },
+    {
+      "id": "fixture-range-001",
+      "edition": "2000-01-03",
+      "domain": "fx",
+      "indicator": "fx.fixture_rate",
+      "claim_type": "range",
+      "title": "Fixture sintético: rango",
+      "statement": "Registro sintético solo para pruebas. No describe ningún dato real.",
+      "range": { "min": 1.0, "max": 2.0 },
+      "unit": "fixture",
+      "observed_at": "2000-01-02",
+      "sources": [
+        { "name": "Fixture A", "url": "https://example.org/a", "captured_at": "2000-01-03" },
+        { "name": "Fixture B", "url": "https://example.org/b", "captured_at": "2000-01-03" }
+      ]
+    },
+    {
+      "id": "fixture-hypothesis-001",
+      "edition": "2000-01-03",
+      "domain": "sanctions",
+      "indicator": "sanctions.fixture_event",
+      "claim_type": "hypothesis",
+      "title": "Fixture sintético: hipótesis",
+      "statement": "Registro sintético solo para pruebas. No describe ningún dato real.",
+      "observed_at": "2000-01-02",
+      "sources": [
+        { "name": "Fixture A", "url": "https://example.org/a", "captured_at": "2000-01-03" }
+      ],
+      "confidence": "low",
+      "assumptions": ["Premisa sintética"],
+      "falsifiers": ["Evidencia sintética que la refutaría"]
+    }
+  ]
+}
