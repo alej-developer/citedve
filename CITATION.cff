@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Si usas Radar Venezuela en tu trabajo, cítalo con estos metadatos."
+title: "Radar Venezuela"
+type: software
+version: 0.1.0
+date-released: 2026-10-07
+license: Apache-2.0
+repository-code: "https://github.com/alej-developer/radar-venezuela"
+abstract: >-
+  Radar semanal de señales sobre Venezuela (FX, inflación, energía, sanciones,
+  fintech, e-commerce, infraestructura digital). Cada cifra incluye fuente,
+  fecha de captura y enlace.
+keywords:
+  - Venezuela
+  - open data
+  - economic indicators
+authors:
+  - name: "Radar Venezuela contributors"
