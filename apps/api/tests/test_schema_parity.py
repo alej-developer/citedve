@@ -21,7 +21,8 @@ Mutation = Callable[[dict[str, Any]], None]
 
 
 def _sig(doc: dict[str, Any]) -> dict[str, Any]:
-    return doc["signals"][0]
+    signal: dict[str, Any] = doc["signals"][0]
+    return signal
 
 
 def _no_sources_when_published(d: dict[str, Any]) -> None:

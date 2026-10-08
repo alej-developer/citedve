@@ -14,11 +14,9 @@ class SignalRepository(Protocol):
         from_date: date | None = None,
         to_date: date | None = None,
         tag: str | None = None,
-    ) -> list[Signal]:
-        ...
+    ) -> list[Signal]: ...
 
-    def get_by_id(self, signal_id: str) -> Signal | None:
-        ...
+    def get_by_id(self, signal_id: str) -> Signal | None: ...
 
 
 class FileSignalRepository:
@@ -39,7 +37,7 @@ class FileSignalRepository:
         tag: str | None = None,
     ) -> list[Signal]:
         signals = self._load()
-        
+
         if category:
             signals = [s for s in signals if s.category == category]
         if from_date:
@@ -48,7 +46,7 @@ class FileSignalRepository:
             signals = [s for s in signals if s.as_of_date <= to_date]
         if tag:
             signals = [s for s in signals if tag in s.tags]
-            
+
         # Orden descendente por captura para cursor-based pagination simple
         signals.sort(key=lambda s: s.captured_at, reverse=True)
         return signals

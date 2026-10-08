@@ -15,20 +15,22 @@ CONTENT_DIR = ROOT / "content" / "radar"
 TEMPLATE_PATH = CONTENT_DIR / "_template.md"
 SOURCES_PATH = ROOT / "docs" / "SOURCES.md"
 
+
 def parse_sources_checklist() -> list[str]:
     """Lee docs/SOURCES.md y extrae la lista de URLs estables para revisión humana."""
-    urls = []
+    urls: list[str] = []
     if not SOURCES_PATH.exists():
         return urls
-    
+
     content = SOURCES_PATH.read_text(encoding="utf-8")
     for line in content.splitlines():
         if line.startswith("|") and "http" in line:
             # Extraer URL del markdown
-            match = re.search(r'<(https?://[^>]+)>', line)
+            match = re.search(r"<(https?://[^>]+)>", line)
             if match:
                 urls.append(match.group(1))
     return urls
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Inicia el flujo de trabajo de la semana.")
@@ -41,9 +43,9 @@ def main() -> int:
         return 1
 
     target_md = CONTENT_DIR / f"{week}.md"
-    
+
     print(f"=== CitedVE - Semana {week} ===")
-    
+
     # 1. Crear documento desde plantilla
     if not target_md.exists():
         print(f"[*] Creando {target_md.name} desde la plantilla...")
@@ -58,7 +60,7 @@ def main() -> int:
     urls = parse_sources_checklist()
     for url in urls:
         print(f"    - [ ] {url}")
-        
+
     print("\n    (Nota: No usamos scrapers masivos para cumplir con TOS y evitar baneos anti-bot).")
 
     # 3 & 4. Validar y construir datos
@@ -76,10 +78,11 @@ def main() -> int:
     print("[OK] Señales validadas y derivados reconstruidos.")
     print("\nSiguientes pasos:")
     print(f"  1. Edita {target_md.relative_to(ROOT)} para pulir el contenido.")
-    print("  2. git add data/ content/ && git commit -m \"feat: radar semanal " + week + "\"")
+    print('  2. git add data/ content/ && git commit -m "feat: radar semanal ' + week + '"')
     print("  3. Abre el PR.")
-    
+
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

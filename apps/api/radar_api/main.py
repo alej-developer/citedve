@@ -1,6 +1,7 @@
+from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from datetime import date
-from typing import Annotated
+from typing import Annotated, get_args
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,7 +14,7 @@ from radar_api.repository import FileSignalRepository, SignalRepository
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     setup_logging()
     yield
 
@@ -50,8 +51,8 @@ def health() -> dict[str, str]:
 def list_signals(
     repo: RepoDep,
     category: Category | None = None,
-    from_date: date | None = Query(None, alias="from"),
-    to_date: date | None = Query(None, alias="to"),
+    from_date: Annotated[date | None, Query(alias="from")] = None,
+    to_date: Annotated[date | None, Query(alias="to")] = None,
     tag: str | None = None,
     limit: int = Query(50, ge=1, le=100),
     cursor: str | None = None,
@@ -89,9 +90,7 @@ def latest(repo: RepoDep) -> LatestDocument:
 @app.get("/v1/meta/categories", response_model=list[str])
 def list_categories() -> list[str]:
     # Extraer los valores literales del tipo Category
-    from radar_api.models import Category
-    import typing
-    return list(typing.get_args(Category))
+    return list(get_args(Category))
 
 
 @app.get("/v1/meta/sources", response_model=list[str])
