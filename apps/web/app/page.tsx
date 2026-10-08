@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SignalRow } from "@/components/SignalRow";
 import { EmptyState } from "@/components/EmptyState";
 import { WeekNav } from "@/components/WeekNav";
@@ -45,7 +46,7 @@ export default function Home() {
           <h2 className="font-mono text-xs uppercase tracking-widest text-ink-soft">
             Top Señales ({editionDate})
           </h2>
-          <a href="/signals" className="text-sm underline decoration-rule underline-offset-2 hover:text-ink text-ink-soft">Ver todas</a>
+          <Link href="/signals" className="text-sm underline decoration-rule underline-offset-2 hover:text-ink text-ink-soft">Ver todas</Link>
         </div>
         
         {latest.signals.length === 0 ? (
@@ -63,7 +64,7 @@ export default function Home() {
         <span>Información factual, no consejo de inversión.</span>
         <div className="space-x-4">
           <a href="/about" className="hover:text-ink">Acerca de</a>
-          <a href="/radar" className="hover:text-ink">Archivo</a>
+          <Link href="/radar" className="hover:text-ink">Archivo</Link>
         </div>
       </footer>
     </main>

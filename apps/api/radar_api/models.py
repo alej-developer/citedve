@@ -3,13 +3,23 @@
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Literal, TypeVar, Generic
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 SCHEMA_VERSION = "0.1.0"
 
-Category = Literal["fx", "inflation", "energy", "sanctions", "fintech", "ecommerce", "digital_infra", "politics_risk", "other"]
+Category = Literal[
+    "fx",
+    "inflation",
+    "energy",
+    "sanctions",
+    "fintech",
+    "ecommerce",
+    "digital_infra",
+    "politics_risk",
+    "other",
+]
 Direction = Literal["up", "down", "flat", "mixed", "n/a"]
 Confidence = Literal["low", "medium", "high"]
 Status = Literal["published", "draft", "retracted"]
@@ -35,7 +45,10 @@ class Signal(_Strict):
                 "id": "bcv-official-rate-jan2024",
                 "title": "Tasa oficial del BCV alcanza 36,00 Bs/USD a inicios de 2024",
                 "category": "fx",
-                "summary": "El Banco Central de Venezuela reporta una tasa oficial promedio de 36,00 Bs/USD en la primera jornada del año.",
+                "summary": (
+                    "El Banco Central de Venezuela reporta una tasa oficial "
+                    "promedio de 36,00 Bs/USD en la primera jornada del año."
+                ),
                 "value_numeric": 36.00,
                 "value_text": None,
                 "unit": "Bs/USD",
@@ -47,15 +60,15 @@ class Signal(_Strict):
                     {
                         "name": "Banco Central de Venezuela",
                         "url": "https://www.bcv.org.ve",
-                        "accessed_at": "2024-01-02"
+                        "accessed_at": "2024-01-02",
                     }
                 ],
                 "tags": ["bcv", "exchange_rate"],
                 "region": "VE",
                 "notes": None,
-                "status": "published"
+                "status": "published",
             }
-        }
+        },
     )
 
     id: str = Field(pattern=r"^[a-z0-9][a-z0-9-]{2,80}$")
@@ -77,9 +90,8 @@ class Signal(_Strict):
 
     @model_validator(mode="after")
     def _check_rules(self) -> Signal:
-        if self.status == "published":
-            if not self.sources:
-                raise ValueError("Toda señal published exige >=1 source con URL.")
+        if self.status == "published" and not self.sources:
+            raise ValueError("Toda señal published exige >=1 source con URL.")
         return self
 
 
@@ -93,8 +105,6 @@ class LatestDocument(_Strict):
     signals: list[Signal]
 
 
-T = TypeVar("T")
-
-class PaginatedResponse(BaseModel, Generic[T]):
+class PaginatedResponse[T](BaseModel):
     items: list[T]
     next_cursor: str | None

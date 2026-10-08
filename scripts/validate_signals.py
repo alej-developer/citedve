@@ -10,7 +10,6 @@ import json
 import sys
 from pathlib import Path
 from typing import Any
-from datetime import datetime
 
 from jsonschema import Draft202012Validator
 
@@ -42,10 +41,10 @@ def collect_errors(
         if sid in seen:
             errors.append(f"integridad: id duplicado '{sid}'")
         seen.add(sid)
-        
+
         if signal["status"] == "published" and len(signal.get("sources", [])) == 0:
             errors.append(f"integridad: '{sid}' está published pero no tiene sources")
-            
+
         # Optional validation for accessed_at <= as_of_date or similar if needed.
     return errors
 

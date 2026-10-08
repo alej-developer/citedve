@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getRadarPosts } from "@/lib/data";
 import { EmptyState } from "@/components/EmptyState";
 
@@ -31,7 +32,7 @@ export default function RadarArchive() {
       )}
       
       <div className="mt-12">
-        <a href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</a>
+        <Link href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</Link>
       </div>
     </main>
   );

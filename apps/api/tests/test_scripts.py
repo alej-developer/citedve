@@ -34,9 +34,7 @@ def test_duplicate_id_is_reported(tmp_path: Path, fixture_doc: dict[str, Any]) -
 def test_schema_violation_is_reported(tmp_path: Path, fixture_doc: dict[str, Any]) -> None:
     fixture_doc["signals"][0]["sources"] = []
     signals = _write(tmp_path, fixture_doc)
-    assert any(
-        e.startswith("schema:") for e in validate_signals.collect_errors(signals, SCHEMA)
-    )
+    assert any(e.startswith("schema:") for e in validate_signals.collect_errors(signals, SCHEMA))
 
 
 def test_csv_and_latest_render(fixture_doc: dict[str, Any]) -> None:

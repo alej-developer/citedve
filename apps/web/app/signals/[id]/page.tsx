@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getSignalById, loadAllSignals } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { ConfidencePill } from "@/components/ConfidencePill";
@@ -64,7 +65,7 @@ export default async function SignalDetailPage({ params }: { params: Promise<{ i
       </section>
 
       <div className="mt-12 border-t border-rule pt-6">
-        <a href="/signals" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al explorador</a>
+        <Link href="/signals" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al explorador</Link>
       </div>
     </main>
   );
