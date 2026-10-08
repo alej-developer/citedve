@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getRadarPost, getRadarPosts } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -29,7 +30,7 @@ export default async function RadarPostPage({ params }: { params: Promise<{ date
       </article>
       
       <div className="mt-16 border-t border-rule pt-6">
-        <a href="/radar" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al archivo</a>
+        <Link href="/radar" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al archivo</Link>
       </div>
     </main>
   );

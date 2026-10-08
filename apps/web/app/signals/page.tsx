@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { loadAllSignals } from "@/lib/data";
 import { SignalRow } from "@/components/SignalRow";
 import { EmptyState } from "@/components/EmptyState";
@@ -36,7 +37,7 @@ export default function SignalsExplorer() {
       )}
       
       <div className="mt-12">
-        <a href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</a>
+        <Link href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</Link>
       </div>
     </main>
   );

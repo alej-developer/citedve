@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Metodología | CitedVE",
 };
@@ -33,13 +35,13 @@ export default function Methodology() {
           <h2 className="font-serif text-2xl text-ink mb-3">Limitaciones</h2>
           <p>
             Dada la naturaleza del ecosistema de información venezolano, existe un rezago constante en la emisión de indicadores macroeconómicos. 
-            Las "brechas cambiarias" representan promedios tomados de ventanas específicas del mercado P2P y no constituyen tasas de ejecución garantizadas.
+            Las &quot;brechas cambiarias&quot; representan promedios tomados de ventanas específicas del mercado P2P y no constituyen tasas de ejecución garantizadas.
           </p>
         </section>
       </article>
 
       <div className="mt-12 border-t border-rule pt-6">
-        <a href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</a>
+        <Link href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</Link>
       </div>
     </main>
   );

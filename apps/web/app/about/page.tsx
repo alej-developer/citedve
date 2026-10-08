@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Acerca de | CitedVE",
 };
@@ -29,7 +31,7 @@ export default function About() {
         <section>
           <h2 className="font-serif text-2xl text-ink mb-3">Contacto & Contribuciones</h2>
           <p>
-            Todo el código y los datos están abiertos en GitHub. Las contribuciones son procesadas exclusivamente mediante Pull Requests para garantizar la inmutabilidad de la cadena de datos ("Git as Database").
+            Todo el código y los datos están abiertos en GitHub. Las contribuciones son procesadas exclusivamente mediante Pull Requests para garantizar la inmutabilidad de la cadena de datos (&quot;Git as Database&quot;).
           </p>
           <a href="https://github.com/alej-developer/citedve" className="mt-4 inline-block px-4 py-2 bg-ink text-paper text-sm font-medium micro-hover" target="_blank" rel="noopener noreferrer">
             Ver Repositorio en GitHub
@@ -38,7 +40,7 @@ export default function About() {
       </article>
 
       <div className="mt-12 border-t border-rule pt-6">
-        <a href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</a>
+        <Link href="/" className="text-sm font-mono hover:text-ink text-ink-soft micro-hover">&larr; Volver al inicio</Link>
       </div>
     </main>
   );
