@@ -16,6 +16,10 @@ RUN uv sync --frozen --no-install-project --no-dev
 # Construir aplicación final
 FROM python:3.12-slim-bookworm
 
+# Usuario de sistema sin privilegios: el proceso no corre como root
+RUN groupadd --system --gid 1001 radar \
+    && useradd --system --uid 1001 --gid radar --no-create-home --home-dir /nonexistent --no-log-init radar
+
 WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 
@@ -28,6 +32,8 @@ ENV PATH="/app/.venv/bin:$PATH"
 # Variables de entorno
 ENV RADAR_DATA_DIR="/data"
 ENV PORT=8000
+
+USER radar
 
 # Exponer puerto
 EXPOSE 8000
