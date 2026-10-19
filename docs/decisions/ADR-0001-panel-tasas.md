@@ -1,10 +1,10 @@
 # ADR-0001: Panel de tasas por banco y brecha BCV–P2P antes de levantar el «no hacer» n.º 10
 
-- **Estado:** Propuesto
+- **Estado:** Aceptado
 - **Fecha:** 2026-10-19
 - **Ámbito:** `docs/PRODUCT.md` §8 («no hacer» n.º 10 y criterio de salida), dominio FX
-- **Numeración:** es el ADR-0001 porque `docs/decisions/` todavía no existe en `main` (comprobado el 2026-10-19 sobre el commit `275581b`). Este ADR crea la carpeta. El documento de planes usaba otros números provisionales (ADR-0003 para este panel); quedan sustituidos.
-- **Destino previsto:** `docs/decisions/0001-panel-tasas.md`. Es un borrador fuera del repo: no hay commit ni PR.
+- **Numeración:** es el ADR-0001 porque `docs/decisions/` todavía no existía en `main` cuando se redactó (comprobado el 2026-10-19 sobre el commit `275581b`). Este ADR creó la carpeta. El documento de planes usaba otros números provisionales (ADR-0003 para este panel); quedan sustituidos.
+- **Ubicación:** `docs/decisions/ADR-0001-panel-tasas.md`.
 
 ## Contexto
 
@@ -35,6 +35,14 @@ Se reabre el «no hacer» n.º 10 **solo** para el panel de tasas, con el alcanc
 | **C. Panel completo de una vez (API, serie, calculadora)** | Más vistoso | Más superficie de error. La calculadora roza el «no hacer» n.º 7 (señales de trading) | Descartada |
 | **D. Panel acotado con ADR (esta decisión)** | Cumple el criterio de salida de §8 y ataca el incumplimiento actual de FX | Añade un contrato nuevo que mantener | **Elegida** |
 
+## Decisiones del dueño (2026-10-19)
+
+Cierran las tres preguntas abiertas del plan de implementación. La misma redacción está en `docs/SOURCES.md`.
+
+1. **Independencia P2P.** Las medianas de Binance y de Bybit publicadas por usdt.com.ve cuentan como 2 fuentes para la regla «≥ 2 fuentes». La independencia se mide por `upstream_id` distinto (`binance-p2p` y `bybit-p2p`), aunque el `publisher_id` sea el mismo. Limitación de editor único: hay un solo editor. El panel lo dice de forma explícita cuando solo hay un editor. No son dos editores independientes.
+2. **Corte y frescura.** El corte semanal es el viernes. La fecha que manda para la tasa oficial del BCV es la fecha de operación, no la fecha valor. Se muestra el aviso «desactualizado» cuando el corte tiene más de 8 días (`hoy − cutoff_date > 8`).
+3. **Brecha.** Se muestra la brecha frente al mínimo, al máximo y a la mediana P2P. Cada una va etiquetada.
+
 ## Consecuencias
 
 - **Positivas:** el FX pasa a mostrarse como rango entre fuentes («no hacer» n.º 3), PRODUCT §5 implementa por fin la «Observación» y hay una métrica de multiplicidad que se puede medir.
@@ -46,7 +54,7 @@ Se reabre el «no hacer» n.º 10 **solo** para el panel de tasas, con el alcanc
 1. **Qué cuenta como indicador.** Una magnitud con valor, unidad y fecha del dato que se publica de forma recurrente para su comparación en el tiempo. En este panel lo son: la tasa por institución y lado, la mediana y el rango P2P por fecha, la brecha BCV–P2P y la dispersión entre bancos. **No son indicadores nuevos:** las vistas de presentación (tabla, ordenación) ni los cálculos auxiliares que no se publican. Cualquier magnitud fuera de esta lista (comisiones de casas de cambio, remesas, inflación por banco…) necesita otro ADR.
 2. **Fuentes según PRODUCT §8 n.º 1, 3 y 5.**
    - Cada observación lleva fuente, `accessed_at`, URL exacta del dato (no la portada) y fecha del dato. Sin estos campos, el validador la rechaza.
-   - El P2P solo se publica como rango de ≥ 2 fuentes independientes por fecha. Con una sola fuente, «sin dato disponible», nunca imputado.
+   - El P2P solo se publica como rango de ≥ 2 fuentes independientes por fecha. Qué cuenta como independiente lo fija la decisión del dueño de este ADR (`upstream_id` distinto). Con una sola fuente, «sin dato disponible», nunca imputado.
    - Precedente del PR #4: una cifra sin página con fecha no se carga, o se marca `retracted`.
    - Ingreso manual citado. Sin scraping que viole ToS o robots.txt, y nada de la API interna de Binance P2P (`/bapi/` está en Disallow).
 3. **Sin ranking ni recomendaciones.**
