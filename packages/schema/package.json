@@ -9,6 +9,7 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./signals.schema.json": "./signals.schema.json"
+    "./signals.schema.json": "./signals.schema.json",
+    "./fx_observations.schema.json": "./fx_observations.schema.json"
   }
 }
