@@ -4,6 +4,14 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/), y este proyecto se adhiere al [Versionamiento Semántico](https://semver.org/lang/es/).
 
+## [Unreleased]
+
+### Fixed
+- `FxGapMeter` calcula el ancho de la barra con las dos tasas, en lugar de dejarla fija en 50/50.
+- Las fuentes de las señales del 7 de octubre apuntan a la página o al archivo que contiene la cifra.
+- La cotización paralela de 991,99 Bs/USD queda `retracted`: no hay una URL exacta que la muestre.
+- `CONTRIBUTING.md` describe el esquema `0.1.0` (`accessed_at` en las fuentes; sin `claim_type`).
+
 ## [0.1.0] - 2026-10-07
 
 ### Added

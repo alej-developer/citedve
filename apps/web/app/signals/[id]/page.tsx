@@ -30,6 +30,13 @@ export default async function SignalDetailPage({ params }: { params: Promise<{ i
           <ConfidencePill level={signal.confidence} />
         </div>
         <h1 className="font-serif text-3xl sm:text-4xl text-ink leading-tight">{signal.title}</h1>
+        {signal.status !== "published" && (
+          <p className="mt-4 border border-dashed border-down px-3 py-2 text-sm text-down">
+            {signal.status === "retracted"
+              ? "Señal retirada: la cifra no tiene una página exacta que la sostenga y no debe citarse como publicada."
+              : "Borrador: esta señal no está publicada."}
+          </p>
+        )}
         
         {(signal.value_numeric !== null || signal.value_text) && (
           <div className={`mt-6 tabular-data text-2xl ${isUp ? 'text-up' : isDown ? 'text-down' : 'text-ink-soft'}`}>

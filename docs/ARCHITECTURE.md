@@ -47,8 +47,9 @@ C4Context
 (`packages/schema/src/index.ts`) y modelos Pydantic (`apps/api/radar_api/models.py`).
 `apps/api/tests/test_schema_parity.py` verifica que JSON Schema y Pydantic aceptan y rechazan lo mismo.
 
-Invariantes que el esquema hace cumplir: toda señal tiene al menos una fuente con `name`, `url` y
-`captured_at`; los rangos exigen dos fuentes; las hipótesis exigen premisas y criterios de refutación.
+Invariantes que el esquema `0.1.0` hace cumplir: toda fuente tiene `name`, `url` y `accessed_at`;
+toda señal tiene `captured_at`; una señal `published` exige al menos una fuente. No hay campos
+`claim_type`, `range` ni `assumptions`.
 
 ## Decisiones y desviaciones del stack previsto
 

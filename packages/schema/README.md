@@ -12,8 +12,8 @@ Contrato de datos de CitedVE.
 Un test en `apps/api/tests/test_schema_parity.py` comprueba que JSON Schema y Pydantic aceptan
 y rechazan los mismos documentos.
 
-Reglas que el esquema impone:
+Reglas que el esquema `0.1.0` impone:
 
-- `sources` tiene al menos 1 elemento, y cada fuente exige `name`, `url` y `captured_at`.
-- `claim_type = range` exige `range`, `unit` y al menos 2 fuentes.
-- `claim_type = hypothesis` exige `confidence`, `assumptions` y `falsifiers`.
+- Cada fuente exige `name`, `url` y `accessed_at` (fecha `YYYY-MM-DD`).
+- Una señal `published` exige al menos una fuente. `captured_at` es un campo de la señal, no de la fuente.
+- No hay `claim_type`, `range`, `assumptions` ni `falsifiers`. Esos conceptos no forman parte de este contrato.

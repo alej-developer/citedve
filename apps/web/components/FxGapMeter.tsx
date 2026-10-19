@@ -1,7 +1,8 @@
-export function FxGapMeter({ official, parallel }: { official: number, parallel: number }) {
-  const gap = ((parallel - official) / official) * 100;
-  const gapFormatted = gap.toFixed(1) + "%";
-  
+import { computeFxGap } from "@/lib/fxGap";
+
+export function FxGapMeter({ official, parallel }: { official: number; parallel: number }) {
+  const gap = computeFxGap(official, parallel);
+
   return (
     <div className="flex items-center gap-4 py-3 border-y border-rule">
       <div className="flex-1">
@@ -9,17 +10,20 @@ export function FxGapMeter({ official, parallel }: { official: number, parallel:
           <span>BCV ({official})</span>
           <span>P2P ({parallel})</span>
         </div>
-        <svg className="w-full h-2 rounded-full overflow-hidden" preserveAspectRatio="none">
+        <svg
+          className="w-full h-2 rounded-full overflow-hidden"
+          preserveAspectRatio="none"
+          role="img"
+          aria-label={`Brecha ${gap.label} entre BCV ${official} y P2P ${parallel}`}
+        >
           <rect width="100%" height="100%" fill="var(--color-paper-raised)" />
-          {/* Base BCV line */}
-          <rect width="50%" height="100%" fill="var(--color-flat)" />
-          {/* Gap line */}
-          <rect x="50%" width="50%" height="100%" fill="var(--color-down)" opacity="0.8" />
+          <rect width={gap.baseWidth} height="100%" fill="var(--color-flat)" />
+          <rect x={gap.gapX} width={gap.gapWidth} height="100%" fill="var(--color-down)" opacity="0.8" />
         </svg>
       </div>
       <div className="w-16 text-right">
         <span className="block font-mono text-xs text-ink-soft uppercase">Brecha</span>
-        <span className="font-semibold text-down tabular-data">{gapFormatted}</span>
+        <span className="font-semibold text-down tabular-data">{gap.label}</span>
       </div>
     </div>
   );

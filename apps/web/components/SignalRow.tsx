@@ -13,7 +13,14 @@ export function SignalRow({ signal }: { signal: Signal }) {
       </div>
       <div className="flex-1">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="font-serif text-lg leading-snug text-ink">{signal.title}</h3>
+          <h3 className="font-serif text-lg leading-snug text-ink">
+            {signal.status !== "published" && (
+              <span className="mr-2 inline-flex items-center px-2 py-0.5 rounded-full border border-dashed border-down text-[10px] font-sans uppercase tracking-wider text-down align-middle">
+                {signal.status === "retracted" ? "Retirada" : "Borrador"}
+              </span>
+            )}
+            {signal.title}
+          </h3>
           {(signal.value_numeric !== null || signal.value_text) && (
             <div className={`text-right tabular-data ${isUp ? 'text-up' : isDown ? 'text-down' : 'text-ink-soft'}`}>
               <span className="font-semibold text-lg">{signal.value_numeric ?? signal.value_text}</span>
