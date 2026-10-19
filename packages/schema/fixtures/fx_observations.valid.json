@@ -1,0 +1,334 @@
+{
+  "schema_version": "0.1.0",
+  "editions": [
+    {
+      "id": "2026-W42",
+      "cutoff_date": "2026-10-16",
+      "status": "published",
+      "p2p_status": "publicado",
+      "notes": "Edición sintética para pruebas de contrato. No es una captura real y no se publica en la portada."
+    }
+  ],
+  "observations": [
+    {
+      "value_as_published": "100,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_oficial_bcv-bcv-compra",
+      "edition": "2026-W42",
+      "indicator": "tasa_oficial_bcv",
+      "institution": {
+        "id": "bcv",
+        "name": "Banco Central de Venezuela (sintético)",
+        "kind": "banco_central"
+      },
+      "side": "compra",
+      "value": 100.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_operacion",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, libro SMC sintético",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/sites/default/files/EstadisticasGeneral/sintetico_smc.xls",
+        "locator": "hoja 16102026, fila USD, lado compra",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "operation_date": "2026-10-16"
+    },
+    {
+      "value_as_published": "101,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_oficial_bcv-bcv-venta",
+      "edition": "2026-W42",
+      "indicator": "tasa_oficial_bcv",
+      "institution": {
+        "id": "bcv",
+        "name": "Banco Central de Venezuela (sintético)",
+        "kind": "banco_central"
+      },
+      "side": "venta",
+      "value": 101.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_operacion",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, libro SMC sintético",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/sites/default/files/EstadisticasGeneral/sintetico_smc.xls",
+        "locator": "hoja 16102026, fila USD, lado venta",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "operation_date": "2026-10-16"
+    },
+    {
+      "value_as_published": "110,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-banco-alfa-compra",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "banco-alfa",
+        "name": "Banco Alfa (sintético)",
+        "kind": "banco"
+      },
+      "side": "compra",
+      "value": 110.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (fila sintética)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Banco Alfa (sintético), lado compra"
+      }
+    },
+    {
+      "value_as_published": "111,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-banco-alfa-venta",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "banco-alfa",
+        "name": "Banco Alfa (sintético)",
+        "kind": "banco"
+      },
+      "side": "venta",
+      "value": 111.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (fila sintética)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Banco Alfa (sintético), lado venta"
+      }
+    },
+    {
+      "value_as_published": "120,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-banco-beta-compra",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "banco-beta",
+        "name": "Banco Beta (sintético)",
+        "kind": "banco"
+      },
+      "side": "compra",
+      "value": 120.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (fila sintética)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Banco Beta (sintético), lado compra"
+      }
+    },
+    {
+      "value_as_published": "121,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-banco-beta-venta",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "banco-beta",
+        "name": "Banco Beta (sintético)",
+        "kind": "banco"
+      },
+      "side": "venta",
+      "value": 121.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (fila sintética)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Banco Beta (sintético), lado venta"
+      }
+    },
+    {
+      "value_as_published": "130,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-banco-gamma-compra",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "banco-gamma",
+        "name": "Banco Gamma (sintético)",
+        "kind": "banco"
+      },
+      "side": "compra",
+      "value": 130.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (fila sintética)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Banco Gamma (sintético), lado compra"
+      }
+    },
+    {
+      "value_as_published": "131,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-banco-gamma-venta",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "banco-gamma",
+        "name": "Banco Gamma (sintético)",
+        "kind": "banco"
+      },
+      "side": "venta",
+      "value": 131.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (fila sintética)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Banco Gamma (sintético), lado venta"
+      }
+    },
+    {
+      "value_as_published": "140,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-otras-instituciones-compra",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "otras-instituciones",
+        "name": "Otras Instituciones",
+        "kind": "agregado_fuente"
+      },
+      "side": "compra",
+      "value": 140.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (agregado sintético)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Otras Instituciones"
+      }
+    },
+    {
+      "value_as_published": "141,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-tasa_informativa_banco-otras-instituciones-venta",
+      "edition": "2026-W42",
+      "indicator": "tasa_informativa_banco",
+      "institution": {
+        "id": "otras-instituciones",
+        "name": "Otras Instituciones",
+        "kind": "agregado_fuente"
+      },
+      "side": "venta",
+      "value": 141.0,
+      "unit": "VES/USD",
+      "date_basis": "fecha_indicador",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "BCV: reproducción sin fines de lucro citando la fuente",
+        "name": "BCV, tasas informativas (agregado sintético)",
+        "publisher_id": "bcv",
+        "url": "https://www.bcv.org.ve/tasas-informativas-sistema-bancario?field_fecha_del_indicador_value[min][date]=16+Oct+2026&field_fecha_del_indicador_value[max][date]=16+Oct+2026",
+        "locator": "fila Otras Instituciones"
+      }
+    },
+    {
+      "value_as_published": "150,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-p2p_referencia-binance-p2p-compra",
+      "edition": "2026-W42",
+      "indicator": "p2p_referencia",
+      "institution": {
+        "id": "binance-p2p",
+        "name": "Binance P2P (mediana sintética)",
+        "kind": "mercado_p2p"
+      },
+      "side": "compra",
+      "value": 150.0,
+      "unit": "VES/USDT",
+      "date_basis": "captura_archivada",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "Marcador sintético. CC-BY-4.0 cubre el dataset; esta fila no es una captura.",
+        "name": "usdt.com.ve, Binance P2P (mediana sintética)",
+        "publisher_id": "usdt-com-ve",
+        "upstream_id": "binance-p2p",
+        "url": "https://www.usdt.com.ve/tasa-binance-hoy",
+        "archive_url": "https://web.archive.org/web/19990101000000/https://www.usdt.com.ve/tasa-binance-hoy",
+        "locator": "marcador de archivo, no es una captura real"
+      }
+    },
+    {
+      "value_as_published": "160,00",
+      "as_of_date": "2026-10-16",
+      "status": "published",
+      "notes": "Dato sintético de prueba. No es una tasa publicada.",
+      "id": "fx-2026-W42-p2p_referencia-bybit-p2p-compra",
+      "edition": "2026-W42",
+      "indicator": "p2p_referencia",
+      "institution": {
+        "id": "bybit-p2p",
+        "name": "Bybit P2P (mediana sintética)",
+        "kind": "mercado_p2p"
+      },
+      "side": "compra",
+      "value": 160.0,
+      "unit": "VES/USDT",
+      "date_basis": "captura_archivada",
+      "source": {
+        "accessed_at": "2026-10-16T18:00:00Z",
+        "license": "Marcador sintético. CC-BY-4.0 cubre el dataset; esta fila no es una captura.",
+        "name": "usdt.com.ve, Bybit P2P (mediana sintética)",
+        "publisher_id": "usdt-com-ve",
+        "upstream_id": "bybit-p2p",
+        "url": "https://www.usdt.com.ve/tasa-bybit-hoy",
+        "archive_url": "https://web.archive.org/web/19990101000000/https://www.usdt.com.ve/tasa-bybit-hoy",
+        "locator": "marcador de archivo, no es una captura real"
+      }
+    }
+  ]
+}
