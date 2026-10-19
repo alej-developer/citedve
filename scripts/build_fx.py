@@ -5,7 +5,7 @@ Uso:
     uv run python scripts/build_fx.py --check
 
 Con el conjunto vacío (ninguna edición published) escribe la foto vacía.
-El cálculo de una edición published llega en el módulo de cálculos FX.
+Una edición published usa los cálculos de `radar_api.fx`.
 """
 
 from __future__ import annotations
@@ -16,13 +16,11 @@ import json
 import sys
 from typing import Any
 
+from radar_api.fx import FRESHNESS_MAX_DAYS, NOTICE, SCHEMA_VERSION, render_published_latest
 from validate_fx import OBSERVATIONS_PATH, ROOT, collect_errors, load_json
 
 CSV_PATH = ROOT / "data" / "fx" / "observations.csv"
 LATEST_PATH = ROOT / "data" / "fx" / "latest.json"
-SCHEMA_VERSION = "0.1.0"
-NOTICE = "Foto semanal, no cotización en vivo. Información, no asesoramiento."
-FRESHNESS_MAX_DAYS = 8
 
 CSV_COLUMNS = [
     "id",
@@ -51,10 +49,6 @@ CSV_COLUMNS = [
     "license",
     "notes",
 ]
-
-
-class PublishedEditionPending(RuntimeError):
-    """La edición published todavía no tiene derivado calculado."""
 
 
 def _cell(value: Any) -> str:
@@ -111,11 +105,9 @@ def render_empty_latest() -> str:
 
 
 def render_latest(document: dict[str, Any]) -> str:
-    published = [edition for edition in document["editions"] if edition["status"] == "published"]
-    if published:
-        raise PublishedEditionPending(
-            "hay una edición published; el derivado calculado se cablea con los cálculos FX"
-        )
+    statuses = {edition["status"] for edition in document["editions"]}
+    if "published" in statuses or "retracted" in statuses:
+        return render_published_latest(document)
     return render_empty_latest()
 
 
@@ -130,11 +122,7 @@ def main(argv: list[str]) -> int:
         return 1
 
     document = load_json(OBSERVATIONS_PATH)
-    try:
-        latest = render_latest(document)
-    except PublishedEditionPending as exc:
-        print(f"ERROR {exc}", file=sys.stderr)
-        return 1
+    latest = render_latest(document)
     outputs = {CSV_PATH: render_csv(document["observations"]), LATEST_PATH: latest}
 
     stale = [

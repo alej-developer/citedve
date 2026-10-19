@@ -9,8 +9,6 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
-import pytest
-
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO / "scripts"))
 
@@ -186,7 +184,7 @@ def test_duplicate_id_and_unknown_edition(tmp_path: Path) -> None:
 
 def test_empty_derivatives_have_no_figures() -> None:
     source = (REPO / "scripts" / "build_fx.py").read_text(encoding="utf-8")
-    assert "radar_api" not in source
+    assert "radar_api.fx" in source
     latest = json.loads(build_fx.render_empty_latest())
     assert latest == {
         "schema_version": "0.1.0",
@@ -199,9 +197,13 @@ def test_empty_derivatives_have_no_figures() -> None:
     assert csv_text.count("\n") == 1
 
 
-def test_published_edition_is_not_rendered_yet() -> None:
-    with pytest.raises(build_fx.PublishedEditionPending):
-        build_fx.render_latest(_doc())
+def test_published_edition_renders_three_gaps() -> None:
+    latest = json.loads(build_fx.render_latest(_doc()))
+    labels = [gap["label"] for gap in latest["gaps"]]
+    assert labels == ["P2P mín.", "P2P máx.", "P2P mediana"]
+    assert latest["p2p"]["limitacion_editor_unico"] is True
+    assert latest["p2p"]["n_editores"] == 1
+    assert latest["p2p"]["n_fuentes"] == 2
 
 
 def test_committed_fx_data_is_empty() -> None:
