@@ -17,7 +17,7 @@ CitedVE no es una startup B2B SaaS promocionando su "AI". Es un **observatorio i
 - **Fondo (Paper):** Off-white cálido (`#F9F9F8`) en modo claro. En modo oscuro, un casi-negro absoluto (`#111111`).
 - **Texto (Ink):** Near-black (`#111111`) en claro para AA contrast; off-white (`#EDEDED`) en oscuro. No usamos #000 ni #FFF absolutos para reducir fatiga visual.
 - **Acentos semánticos:**
-  - `up`: Verde petróleo (`#0F5B46`). Representa alzas (no necesariamente positivas moralmente, ej: inflación) pero mantiene legibilidad sobre el papel.
+  - `up`: Verde petróleo (`#0F5B46`). Representa alzas (no necesariamente positivas moralmente, p. ej.: inflación) pero mantiene legibilidad sobre el papel.
   - `down`: Rojo constricción (`#991b1b`). Representa bajas o alarmas.
   - `flat`: Slate (`#4b5563`). Sin cambios o neutro.
 

@@ -7,7 +7,7 @@
 **Señales citadas sobre Venezuela, open source.**  
 Diseñado para inversores, fundadores y analistas que requieren información auditable, donde cada cifra publicada incluye invariablemente su fuente primaria, fecha de captura y enlace.
 
-*Última edición del Radar: 7 de Octubre de 2026*
+*Última edición del Radar: 7 de octubre de 2026*
 
 🇬🇧 *English summary below.*
 
