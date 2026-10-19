@@ -1,20 +1,34 @@
 import { computeFxGap } from "@/lib/fxGap";
 
-export function FxGapMeter({ official, parallel }: { official: number; parallel: number }) {
+export function FxGapMeter({
+  official,
+  parallel,
+  officialLabel = "BCV",
+  parallelLabel = "P2P",
+}: {
+  official: number;
+  parallel: number;
+  officialLabel?: string;
+  parallelLabel?: string;
+}) {
   const gap = computeFxGap(official, parallel);
 
   return (
     <div className="flex items-center gap-4 py-3 border-y border-rule">
       <div className="flex-1">
         <div className="flex justify-between text-xs font-mono uppercase tracking-widest text-ink-soft mb-1">
-          <span>BCV ({official})</span>
-          <span>P2P ({parallel})</span>
+          <span>
+            {officialLabel} ({official})
+          </span>
+          <span>
+            {parallelLabel} ({parallel})
+          </span>
         </div>
         <svg
           className="w-full h-2 rounded-full overflow-hidden"
           preserveAspectRatio="none"
           role="img"
-          aria-label={`Brecha ${gap.label} entre BCV ${official} y P2P ${parallel}`}
+          aria-label={`Brecha ${gap.label} entre ${officialLabel} ${official} y ${parallelLabel} ${parallel}`}
         >
           <rect width="100%" height="100%" fill="var(--color-paper-raised)" />
           <rect width={gap.baseWidth} height="100%" fill="var(--color-flat)" />
