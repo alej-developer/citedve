@@ -37,7 +37,7 @@ C4Context
 | `packages/schema` | Contrato único: JSON Schema + tipos TS | JSON Schema 2020-12, TypeScript |
 | `apps/api` | Consulta de señales con filtros; espejo Pydantic del contrato | Python 3.12, FastAPI, Pydantic v2 |
 | `apps/web` | Sitio público estático | Next.js App Router, TS estricto, Tailwind 4 |
-| `scripts/` | Validación e derivación de datos | Python + jsonschema |
+| `scripts/` | Validación y derivación de datos | Python + jsonschema |
 | `data/` | Datasets abiertos versionados | JSON, CSV |
 | `content/radar/` | Ediciones semanales | Markdown |
 
