@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/radar`, lastModified: new Date() },
     { url: `${baseUrl}/signals`, lastModified: new Date() },
     { url: `${baseUrl}/methodology`, lastModified: new Date() },
+    { url: `${baseUrl}/fx`, lastModified: new Date() },
     { url: `${baseUrl}/about`, lastModified: new Date() },
   ];
 

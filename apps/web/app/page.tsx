@@ -67,6 +67,7 @@ export default function Home() {
         <span>Información factual, no consejo de inversión.</span>
         <div className="space-x-4">
           <a href="/about" className="hover:text-ink">Acerca de</a>
+          <Link href="/fx" className="hover:text-ink">Tasas</Link>
           <Link href="/radar" className="hover:text-ink">Archivo</Link>
         </div>
       </footer>
