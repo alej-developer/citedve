@@ -111,4 +111,4 @@ No hay campo para quien captura.
 - `p2p_referencia`: `source.archive_url`.
 - URL que termina en `.xls`: `sha256` y `locator`.
 
-Las reglas entre filas (una tasa oficial por lado, al menos 3 bancos, P2P con al menos 2 `upstream_id` distintos o `sin_dato`, corte en viernes, fecha de operación, dominios permitidos) las aplica el validador FX, no este esquema. La definición de independencia y el umbral de «desactualizado» (más de 8 días) están en el ADR-0001 y en `docs/SOURCES.md`.
+Las reglas entre filas las aplica [`scripts/validate_fx.py`](../scripts/validate_fx.py), no este esquema: una tasa oficial por lado, al menos 3 bancos, P2P con al menos 2 `upstream_id` distintos o `sin_dato`, corte en viernes, fecha de operación, dominios permitidos y vetos. La definición de independencia y el umbral de «desactualizado» (más de 8 días) están en el ADR-0001 y en `docs/SOURCES.md`. `scripts/build_fx.py` regenera `data/fx/latest.json` y `data/fx/observations.csv`.
