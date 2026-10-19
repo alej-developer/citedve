@@ -11,7 +11,7 @@ Diseñado para inversores, fundadores y analistas que requieren información aud
 
 🇬🇧 *English summary below.*
 
-> **Demo Pública:** [🔗 citedve.vercel.app](https://citedve.vercel.app/) *(Añade tu URL de Vercel/Pages)*
+> **Demo:** el sitio estático se genera en `apps/web/out`. [citedve.vercel.app](https://citedve.vercel.app/) responde 404 (`DEPLOYMENT_NOT_FOUND`): no hay un despliegue de Vercel vinculado a ese dominio. Hace falta crear el proyecto fuera de este repositorio.
 
 ---
 

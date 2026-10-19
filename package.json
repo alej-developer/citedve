@@ -8,6 +8,7 @@
     "web:dev": "npm run dev -w apps/web",
     "web:lint": "npm run lint -w apps/web",
     "web:typecheck": "npm run typecheck -w apps/web",
+    "web:test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test apps/web/lib/fxGap.test.ts",
     "web:build": "npm run build -w apps/web"
   }
 }

@@ -43,4 +43,5 @@ jobs:
       - run: npm ci
       - run: npm run web:lint
       - run: npm run web:typecheck
+      - run: npm run web:test
       - run: npm run web:build

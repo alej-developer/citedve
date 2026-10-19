@@ -15,11 +15,20 @@ npm install             # dependencias web (workspaces)
 ## Contribuir una señal
 
 1. Verifica que la fuente es **pública** y que puedes citarla.
-2. Añade el objeto a `data/signals.json` siguiendo `docs/DATA_DICTIONARY.md`. Reglas:
-   - `sources` con `name`, `url` y `captured_at` (fecha en que **tú** consultaste la fuente).
-   - `claim_type = fact`: una fuente. `range`: al menos 2 fuentes distintas, con `range.min/max` y `unit`.
-     `hypothesis`: `confidence`, `assumptions` y `falsifiers`.
-   - Sin cifras «de memoria»; sin opinión presentada como hecho.
+2. Añade el objeto a `data/signals.json` siguiendo `docs/DATA_DICTIONARY.md` y
+   `packages/schema/signals.schema.json` (versión `0.1.0`). El contrato actual es este:
+   - Cada elemento de `sources` lleva `name`, `url` y `accessed_at`.
+     `url` es la página o el archivo exacto donde está la cifra, no la portada del sitio.
+     `accessed_at` es la fecha `YYYY-MM-DD` en que consultaste esa URL.
+   - La señal lleva `captured_at`: fecha y hora con zona horaria de la captura.
+   - Una señal `published` exige al menos una fuente. `confidence` es `high`, `medium` o `low`.
+     `direction` es `up`, `down`, `flat`, `mixed` o `n/a`. `status` es `published`, `draft` o `retracted`.
+   - El esquema `0.1.0` no tiene `claim_type`, `range`, `assumptions` ni `falsifiers`.
+     La distinción hecho / rango / hipótesis se escribe en la edición Markdown
+     (`content/radar/`). No añadas esos campos al JSON: el validador los rechaza.
+   - Si no hay una URL exacta que muestre la cifra, no la publiques. Déjala en `draft`
+     o márcala `retracted` y explica el motivo en `notes`.
+   - Sin cifras de memoria y sin opinión presentada como hecho.
 3. Crea o actualiza la edición `content/radar/YYYY-MM-DD.md` (parte de `_template.md`).
 4. Regenera y valida:
 

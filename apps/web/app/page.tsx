@@ -8,10 +8,9 @@ import { loadLatest } from "@/lib/data";
 export default function Home() {
   const latest = loadLatest();
   const editionDate = latest.edition || "Sin publicar";
-  
-  // Extract FX signals for the FxGapMeter
-  const bcvSignal = latest.signals.find(s => s.tags?.includes("bcv"));
-  const parallelSignal = latest.signals.find(s => s.tags?.includes("parallel"));
+  const published = latest.signals.filter((signal) => signal.status === "published");
+  const bcvSignal = published.find((signal) => signal.tags?.includes("bcv") && signal.category === "fx");
+  const parallelSignal = published.find((signal) => signal.tags?.includes("parallel") && signal.category === "fx");
   
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
@@ -34,11 +33,15 @@ export default function Home() {
         <WeekNav current={`Semana ${editionDate}`} prev={editionDate} />
       </div>
 
-      {(bcvSignal && parallelSignal && bcvSignal.value_numeric && parallelSignal.value_numeric) ? (
+      {bcvSignal?.value_numeric && parallelSignal?.value_numeric ? (
         <section className="mt-8 mb-12">
           <h2 className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">Monitor FX</h2>
           <FxGapMeter official={bcvSignal.value_numeric} parallel={parallelSignal.value_numeric} />
         </section>
+      ) : bcvSignal ? (
+        <p className="mt-8 text-sm text-ink-soft">
+          Sin referencia paralela publicada. La brecha no se calcula con una sola tasa.
+        </p>
       ) : null}
 
       <section aria-label="Última edición" className="mt-12">
@@ -49,11 +52,11 @@ export default function Home() {
           <Link href="/signals" className="text-sm underline decoration-rule underline-offset-2 hover:text-ink text-ink-soft">Ver todas</Link>
         </div>
         
-        {latest.signals.length === 0 ? (
+        {published.length === 0 ? (
           <EmptyState />
         ) : (
           <div className="flex flex-col">
-            {latest.signals.slice(0, 8).map((signal) => (
+            {published.slice(0, 8).map((signal) => (
               <SignalRow key={signal.id} signal={signal} />
             ))}
           </div>
