@@ -69,4 +69,4 @@ export interface LatestDocument {
   signals: Signal[];
 }
 
-export * from "./fx.ts";
+export * from "./fx";
