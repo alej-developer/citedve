@@ -1,0 +1,8 @@
+[
+  {"official": 36, "parallel": 39.5, "label": "9.7%"},
+  {"official": 100, "parallel": 200, "label": "100.0%"},
+  {"official": 873.867, "parallel": 873.867, "label": "0.0%"},
+  {"official": 200, "parallel": 100, "label": "-50.0%"},
+  {"official": 0, "parallel": 100, "label": "n/d"},
+  {"official": 10, "parallel": 0, "label": "n/d"}
+]
