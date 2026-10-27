@@ -68,3 +68,5 @@ export interface LatestDocument {
   edition: IsoDate | null;
   signals: Signal[];
 }
+
+export * from "./fx";
