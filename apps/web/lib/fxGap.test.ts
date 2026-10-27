@@ -1,7 +1,26 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import { test } from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { computeFxGap } from "./fxGap.ts";
+
+const casesPath = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../../../packages/schema/fixtures/fx_gap_cases.json",
+);
+const gapCases = JSON.parse(fs.readFileSync(casesPath, "utf8")) as {
+  official: number;
+  parallel: number;
+  label: string;
+}[];
+
+test("el fixture compartido coincide con computeFxGap", () => {
+  for (const row of gapCases) {
+    assert.equal(computeFxGap(row.official, row.parallel).label, row.label);
+  }
+});
 
 test("el porcentaje es (paralelo - oficial) / oficial", () => {
   const view = computeFxGap(36, 39.5);
